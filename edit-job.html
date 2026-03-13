@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+             <meta charset="UTF-8">
+            <title>Edit job</title>
+           
+        </head>
+        <body>
+            
+        <nav class="top-text">
+            <a class="t1" href="index.html" >Home</a> |
+            <a class="t1" href="jobs.html">Jobs</a> |
+            <a class="t1" href="My jobs.html">My jobs</a>
+
+        </nav>
+            <br>
+         <h2>Edit job</h2>
+         <br>
+        <form id="jobform">
+         <label for="jobOptions">Job</label>
+        <select name="jobOptions" id="jobOptions">
+            <option value="value1">Front End Developer</option>
+            <option value="value2">Back End Developer</option>
+            <option value="value3">Penetration Tester</option>
+            <option value="value4">Game Developer</option>
+        </select>
+            <br><br>
+            <label class="text-box"><strong>Company</strong></label>
+            <input type="text" id="companyP" placeholder="Change company">     
+            <br><br>
+            <label class="date-box"><strong>Posted On</strong></label>
+            <input type="date" id="dateP" placeholder="Change date">
+            <br><br>
+            <label class="text-box"><strong>Job Description</strong></label>
+            <input type="text" id="jobDescP"placeholder="Chang description">            
+            
+            <br><br>
+            <label class="sentences-box"><h4> Key Responsibilities</h4></label>
+            <textarea type="text" placeholder="Change Key Responsibilities"></textarea>
+            <br><br>
+            <label class="sentences-box"><h4>Required Skills and Qualifications</h4></label>
+            <textarea type="text" id="skills" placeholder="Change skills "></textarea>
+            <br><hr><br>
+        </form>
+            <button class="submit-button" type="submit">Update</button>
+            <button class="delete-button" type="delete">delete</button>
+        </body>    
+</html>
