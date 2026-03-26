@@ -1,0 +1,473 @@
+:root {
+    --accent-color: rgb(10, 135, 178);
+    --secondary-color: rgb(255, 251, 0);
+    --main-bg-color: rgb(222, 221, 218);
+    --dark-riple: rgb(71, 71, 71);
+    --ui-roundness: 5px
+}
+
+body {
+    margin: 0;
+    
+
+    /* background-color: white; */
+}
+
+* {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    
+    
+    
+}
+
+@keyframes screenOpen {
+	0% {
+		transform: scale(1.25);
+        opacity: 50%;
+	}
+
+
+	100% {
+		transform: scale(1);
+        opacity: 100%;
+	}
+}
+
+@keyframes screenClose {
+	0% {
+		transform: scale(1);
+        opacity: 100%;
+	}
+
+
+	100% {
+		transform: scale(0.85);
+        opacity: 0%;
+	}
+}
+
+@keyframes tabSwitch {
+    0% {
+        transform: translateX(50%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes prompt {
+	0% {
+		transform: translateY(-100%);
+	}
+
+	100% {
+		transform: translateY(0);
+	}
+} 
+
+@keyframes toastActive {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes toastInactive {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes toastActive2 {
+    0% {
+        opacity: 0;
+        scale: (0.4);
+        transform: translate(-50%, -20px);
+    }
+
+    100% {
+        opacity: 1;
+        scale: (1);
+        transform: translate(-50%, 0);
+    }
+}
+
+@keyframes toastInactive2 {
+    0% {
+        opacity: 1;
+        scale: (1);
+        transform: translate(-50%, 0);
+    }
+
+    100% {
+        opacity: 0;
+        scale: (0.4);
+        transform: translate(-50%, -20px);
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+body {
+    font-family: sans-serif;
+    
+}
+
+.container {
+    /* padding: 15px; */
+    padding-inline: 10%;
+}
+
+.uLink {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    
+}
+
+.uLink:visited {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    
+}
+
+.titleBar {
+    /*display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;*/
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    
+    box-shadow: 0 2px 8px #aaaaaa;
+    background-color: var(--accent-color);
+}
+
+.titleBarTabbed {
+    /*display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;*/
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    
+    
+    background-color: var(--accent-color);
+}
+
+.titleBarTabbed p {
+    color: white;
+    padding: 8px;
+    font-size: 150%;
+}
+
+.titleBar p {
+    color: white;
+    padding: 8px;
+    font-size: 150%;
+}
+
+.titleBar a {
+    text-decoration: none;
+    text-decoration-style: none;
+    color: white;
+}
+
+.btn {
+    box-shadow: 0 3px 6px 0 rgba(0,0,0,.14);
+    background-color: var(--accent-color);
+    border: none;
+    font-size: 150%;
+    border-radius: var(--ui-roundness);
+    transition: all 0.3s ease-in-out;
+    color: white;
+    padding: 8px;
+}
+
+.btn--disabled {
+    background-color: var(--main-bg-color);
+    color: black;
+}
+
+.btn:hover {
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,.14);
+    background: var(--accent-color) radial-gradient(circle, transparent 1%, var(--accent-color) 1%) center/15000%;
+    cursor: pointer;
+}
+
+.btn:active {
+    background-color: var(--main-bg-color);
+    background-size: 100%;
+    transition: background 0s;
+}
+
+.imgBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.editText {
+    border: none;
+    padding: 15px;
+    border-bottom: 1px solid #2e2e2e;
+    background-color: var(--main-bg-color);
+    transition: all 0.3s ease-in-out;
+}
+
+.editText:hover {
+    border: none;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+
+.dialogueBox {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.164);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 2;
+    display: none;
+    /*margin: 8px;*/
+}
+
+.dialogueBox p {
+    text-align: center;
+    padding: 8px;
+}
+
+.box {
+    background-color: white;
+    border: none;
+    padding: 15px;
+    
+    width: fit-content;
+    max-width: 50%;
+    
+    border-radius: var(--ui-roundness);
+    box-shadow: 0 3px 7px #aaaaaa;
+    animation: 0.4s cubic-bezier(0.0, 0.0, 0.2, 1) fade-in;
+}
+
+.dialogueBox button {
+    display: flow-root;
+    border: none;
+    background-color: transparent;
+    color: var(--accent-color);
+    margin: 10px;
+    padding: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+.dialogueBox button:hover {
+    background-color: rgba(0, 0, 0, 0.164);
+    cursor: pointer;
+
+}
+
+.list {
+    border: 1px solid #aaaaaa;
+    border-radius: var(--ui-roundness);
+    list-style-type: none;
+}
+
+.listItem {
+    padding: 8px;
+    transition: background-color 0.3s ease-in-out;
+    border-bottom: 1px solid #aaaaaa;
+}
+
+.listItem:hover {
+    background-color: rgba(0, 0, 0, 0.164);
+}
+
+
+.grid1 {
+    display: grid;
+    grid-template-columns:  auto;
+    grid-gap: 8px;
+}
+
+.grid2 {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 8px;
+}
+
+.grid2ng {
+    display: grid;
+    grid-template-columns: auto auto;
+    
+}
+
+.grid3 {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 8px;
+}
+
+.grid4 {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 8px;
+}
+
+.grid5 {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    grid-gap: 8px;
+}
+
+.gridC {
+    display: grid;
+    grid-template-columns:  auto;
+    grid-gap: 8px;
+    place-items: center;
+}
+
+.card {
+    border: 1px solid #aaaaaa;
+    border-radius: var(--ui-roundness);   
+}
+
+.card2 {
+    border-radius: var(--ui-roundness);
+    box-shadow: 0 3px 7px -2px #aaaaaa;
+    border: none;
+    padding: 10px;
+    display: grid; 
+    place-items: center;
+    transition: all 0.4s ease-in-out;
+}
+
+.card2:hover {
+    box-shadow: 0 3px 15px -2px #aaaaaa;
+    cursor: pointer;
+    background: white radial-gradient(circle, transparent 1%, white 1%) center/15000%;
+}
+
+.card2:after {
+    background-color: var(--dark-riple);
+    background-size: 100%;
+    transition: background 0s;
+}
+
+.screen {
+    
+	display: none;
+	animation: 0.3s cubic-bezier(0.0, 0.0, 0.2, 1) screenOpen;
+}
+
+.screen--ghost {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+.screen--closing {
+    
+	animation: 0.3s cubic-bezier(0.0, 0.0, 0.2, 1) screenClose;
+}
+
+.barIco {
+            
+    border: none;
+    border-radius: 100px;
+    transition: all 0.4s ease-in-out;
+}
+.barIco:hover {
+    background-color: rgba(0, 0, 0, 0.212);
+    cursor: pointer;
+}
+
+.tabbedTitleCont {
+    box-shadow: 0 2px 8px #aaaaaa;
+}
+
+.tabOption {
+    
+    background-color: var(--accent-color);
+    float: left;
+    border: none;
+    color: white;
+    font-size: 150%;
+    transition: all 0.4s ease-out;
+    color: rgb(192, 191, 188);
+    
+}
+
+.tabOption:hover {
+    background-color: rgb(255, 0, 0);
+    cursor: pointer;
+}
+
+.tabOption:hover {
+    background-color: var(--accent-color);
+}
+
+.tabOption--Active {
+    border-bottom: 3px solid var(--secondary-color);
+    color: var(--secondary-color);
+}
+
+.tabPage {
+    animation: tabSwitch 0.4s ease-out;
+}
+
+.toast {
+    background-color: rgb(54, 54, 54);
+    border-radius: var(--ui-roundness);
+    padding: 8px;
+    padding-inline: 15px;
+    box-shadow: 1px 1px 15px #aaaaaa;
+    position: absolute;
+    left: 50%;
+    bottom: 10%;
+    transform: translateX(-50%);
+    /* opacity: 0; */
+    animation: toastActive2 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+
+.toast p {
+    color: white;
+}
+
+.toast--inactive {
+    animation: toastInactive2 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.divider {
+    background-color: rgb(207, 207, 207);
+    height: 0.5px;
+}
+

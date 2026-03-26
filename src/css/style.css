@@ -1,0 +1,229 @@
+:root {
+    --accent-color: rgb(10, 135, 178);
+    --ui-roundness: 8px;
+}
+
+@font-face {
+    font-family: "nexa-heavy";
+    src: url(../fonts/nexa/Nexa-Heavy.ttf);
+}
+
+@font-face {
+    font-family: "nexa-light";
+    src: url(../fonts/nexa/Nexa-ExtraLight.ttf);
+}
+
+* {
+    font-family: "nexa-heavy";
+}
+
+body {
+    margin: 0;
+        /* background-color: rgb(242, 247, 250); */
+}
+
+.titleBar {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding: 8px;
+    box-shadow: 0 2px 8px #aaaaaa;
+    margin-bottom: 0;
+    border-bottom: 1px solid rgb(194, 194, 194);
+}
+
+/*.titleBar button {
+    box-shadow: 0 3px 6px 0 rgba(0,0,0,.14);
+    background-color: rgb(10, 135, 178);
+    border: none;
+    font-size: 120%;
+    border-radius: var(--ui-roundness);
+    transition: all 0.3s ease-in-out;
+    color: white;
+    padding: 8px;
+    border-radius: 8px;
+}*/
+
+.titleBarLink {
+    text-emphasis: none;
+    text-decoration: none;
+    color: rgb(18, 33, 116);
+    border-right: 1px black solid;
+    padding-inline: 8px;
+}
+
+.titleBarLink:link {    
+    color: rgb(18, 33, 116);
+}
+
+
+.titleBarLink:visited {
+    color: rgb(17, 29, 97);
+}
+
+.titleBarLink:hover {
+    color: rgb(165, 34, 34);
+}
+
+.titleBarLinkEnd {
+    text-emphasis: none;
+    text-decoration: none;
+    color: rgb(18, 33, 116);
+    padding-inline: 8px;
+}
+
+.titleBarLinkEnd:link {
+    
+    color: rgb(18, 33, 116);
+    
+}
+
+
+.titleBarLinkEnd:visited {
+    
+    color: rgb(17, 29, 97);
+    
+}
+
+.titleBarLinkEnd:hover {
+    color: rgb(165, 34, 34);
+}
+
+
+.tbLeftCont {
+    padding: 10px;
+    display: block;
+}
+
+.tbRightCont {
+    position: absolute;
+    padding: 8px;
+    /* margin: 8px; */
+    right: 0;
+    
+}
+
+
+.btn {
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    background-color: var(--accent-color);
+    border: none;
+    font-size: 1rem;
+    border-radius: var(--ui-roundness);
+    transition: all 0.3s ease-in-out;
+    color: white;
+    padding: 8px;
+}
+
+.btn--disabled {
+    background-color: var(--main-bg-color);
+    box-shadow: 0 3px 6px 0 rgba(0,0,0,.14);
+    border: none;
+    font-size: 150%;
+    padding: 8px;
+    border-radius: var(--ui-roundness);
+    color: rgb(95, 95, 95);
+    cursor: no-drop;
+    pointer-events: none;
+    
+}
+
+.btn:hover {
+    /*box-shadow: 0 5px 8px 0 rgba(0,0,0,.14);
+    background: var(--accent-color) radial-gradient(circle, transparent 1%, var(--accent-color) 1%) center/15000%;*/
+    cursor: pointer;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btnSecondary {
+    box-shadow: 0 3px 6px 0 rgba(0,0,0,.14);
+    background-color: white;
+    border: 1px solid rgb(218, 218, 218);
+    font-size: 1rem;
+    border-radius: var(--ui-roundness);
+    transition: all 0.3s ease-in-out;
+    color: black;
+    padding: 8px;
+}
+
+.btnSecondary:hover {
+    cursor: pointer;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+.card3 {
+    position: relative; /* Ensure the ripple is contained within the card */
+    overflow: hidden; /* Prevent the ripple from overflowing */
+    border-radius: 10px;
+    border: 1px solid rgb(218, 218, 218);
+    padding: 8px;
+    padding-inline: 16px;
+    margin: 8px;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.card3:hover {
+    cursor: pointer;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+
+.container {
+    max-width: 80%;
+    margin-inline: 10%;
+    padding: 32px;
+    padding-top: 6px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    .container {
+        max-width: 100%;
+        margin-inline: 0;
+        padding: 16px;
+        /* border: 1px solid black; */
+    }
+}
+
+@keyframes dBoxOpen {
+    0% {
+        transform: scale(1.3);
+        opacity: 0.3;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.dBoxOverlay {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.199);
+    backdrop-filter: blur(4px);
+    z-index: 3;
+    display: none;
+}
+
+.dBoxCont {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.dBox {
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 16px;
+    animation: dBoxOpen 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}

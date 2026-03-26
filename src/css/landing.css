@@ -1,0 +1,172 @@
+
+.hero {
+    display: flex;
+    padding: 16px;
+    padding-top: 0;
+    background-color: rgb(247, 255, 255);
+    align-items: stretch;
+
+    height: 80vh; /* 80% of the screen height */
+    max-height: 600px; /* Optional: prevents it from getting giant on huge monitors */
+    overflow: hidden; /* Keeps everything tidy */
+}
+
+@media (max-width: 768px) {
+    .hero {
+        display: flex;
+        flex-direction: column; /* Stack vertically by default */
+        padding: 20px;
+        background-color: rgb(247, 255, 255);
+        text-align: center; /* Center text for mobile */
+        max-height: 1024px;
+    }
+
+    .heroLeftText {
+        font-size: 250%; /* Smaller for mobile */
+        max-width: 100%;
+        margin: 0 auto 20px auto;
+    }
+
+    .heroRight img {
+        width: 100%; /* Fill the width on mobile */
+        max-width: 100%; /* Don't let it get massive */
+        height: auto;
+        margin-top: 30px;
+        content: url('../img/graphic2_vertical.png');
+    }
+}
+.heroRight {
+    /*position: absolute;
+    right: 0;*/
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    min-width: 0;
+}
+
+.heroRight img {
+    max-height: 100%; /* Instead of height: 100%, this is "safer" */
+    content: url('../img/graphic2.png');
+    
+}
+
+.heroLeft {
+    
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers your text vertically */
+}
+
+
+
+.heroLeftText {
+    font-size: 3rem;
+    max-width: 13ch;
+    background-image: linear-gradient(rgb(19, 179, 183), rgb(18, 33, 116));
+    color: transparent;
+    background-clip: text;
+
+}
+
+.heroLeftPara {
+    font-size: 1.5rem;
+    color: rgb(18, 33, 116);
+    margin: 0;
+}
+
+.landingBtn {
+    background-image: linear-gradient(to right, rgb(28, 80, 160), rgb(35, 140, 200), rgb(28, 80, 160));
+    background-size: 200% auto;
+    background-position: left center;
+    font-size: 140%;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    /* animation: linearGradientAnim 0.4s ease-out; */
+    transition: all 0.4s ease-out;
+}
+
+
+.landingBtn:hover {
+    /* background-image: linear-gradient(to right, rgb(35, 140, 200), rgb(28, 80, 160)); */
+    /* animation: linearGradientAnim 0.4s ease-out; */
+    background-position: 100% 20%;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.landingBtn:active {
+    box-shadow: none;
+    transform: translateY(8px);
+}
+
+.landingBtnSecondary {
+    background-color: white;
+    color: black;
+    font-size: 140%;
+    border: 1px solid rgb(194, 194, 194);
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0 3px 6px 0 rgba(0,0,0,.14);
+    transition: all 0.4s ease-out;
+}
+
+.landingBtnSecondary:hover {
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.landingBtnSecondary:active {
+    box-shadow: none;
+    transform: translateY(8px);
+}
+
+.hero2 {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+.heroCard {
+    display: flex;
+    flex-direction: row;
+    
+    /* width: 25%; */
+    
+}
+
+.heroCardItem {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    border-right: 1px black solid;
+    padding-inline: 8px;
+}
+
+.heroCardItem img, p {
+    display: inline;
+    align-items: center;
+    max-width: 100%;
+    height: auto;
+}
+
+.heroCardItem p {
+    font-size: 1vh;
+}
+
+.heroCardItemEnd {
+    display: flex;
+    align-items: center;
+    padding-inline: 8px;
+    
+}
+
+.heroCardItemEnd p {
+    font-size: 1vh;
+}
