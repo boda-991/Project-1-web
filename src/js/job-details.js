@@ -37,8 +37,10 @@ function findApplicationDuplicates(applications, username) {
 function getFormData() {
     let fname = document.querySelector("#fname").value;
     let lname = document.querySelector("#lname").value;
-    let city = document.querySelector("#cityOptions").value;
-    let eduLevel = document.querySelector("#degreeOptions").value;
+    let citySelectedIdx = document.querySelector("#cityOptions").selectedIndex;
+    let eduLevelSelectedIdx = document.querySelector("#degreeOptions").selectedIndex;
+    let city = document.querySelector("#cityOptions").options[citySelectedIdx].text;
+    let eduLevel = document.querySelector("#degreeOptions").options[eduLevelSelectedIdx].text;
     let schoolName = document.querySelector("#uni").value;
     let yearsOfExperience = document.querySelector("#YOE").value;
     let employer = document.querySelector("#prevEmployerName").value;
