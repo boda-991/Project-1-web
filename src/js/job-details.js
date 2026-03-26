@@ -18,8 +18,10 @@ function fetchJobDetails(jobID) {
 function populateJobDetails(job) {
     document.querySelector("#jobTitle").innerText = job.title;
     document.querySelector("#companyName").innerText = job.company;
-    document.querySelector("#workingHours").innerText = job.workingHours;
-    document.querySelector("#jobDate").innerText = job.date;
+    document.querySelector("#workingHours").innerText = job.workingHourse;
+    const formattedDate = new Date(job.date).toLocaleDateString();
+
+    document.querySelector("#jobDate").innerText = formattedDate;
     document.querySelector("#jobDescCont").innerHTML = `<p>Job Descriprion:</p> ${job.description}`;
     
 }
