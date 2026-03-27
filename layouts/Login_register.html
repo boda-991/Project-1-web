@@ -1,45 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login & Register</title>
-
-    <link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="../src/css/Login_register.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
 <body>
 
-    <div class="container">
-
+    <div class="container" id="container">
+        
         <div class="form-container sign-up-container">
-            <form>
+            <form action="#">
                 <h1>Create Account</h1>
-
                 <div class="social-container">
                     <a href="#"><i class="fab fa-google"></i></a>
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-github"></i></a>
                     <a href="#"><i class="fab fa-linkedin-in"></i></a>
                 </div>
-
                 <span>or use your email for registration</span>
+                
+                <input type="text" placeholder="Name" required>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <input type="password" placeholder="Confirm Password" required>
 
-                <input type="text" placeholder="Name">
-                <input type="email" placeholder="Email">
-                <input type="password" placeholder="Password">
-                <input type="password" placeholder="Confirm Password">
+                <div class="selection-group">
+                    <label for="accountType">Account Type</label>
+                    <select id="accountType" onchange="toggleCompanyField()">
+                        <option value="user">Normal User</option>
+                        <option value="admin">Company Admin</option>
+                    </select>
+                </div>
 
-                <label for="accountType">Account Type</label>
-                <select id="accountType" onchange="toggleCompanyField()">
-                    <option value="user">User</option>
-                    <option value="admin">Company Admin</option>
-                </select>
-
-                <div id="companyField" style="display:none;">
+                <div id="companyField" style="display:none; width: 100%;">
                     <input type="text" placeholder="Company Name">
                 </div>
 
@@ -48,30 +44,41 @@
         </div>
 
         <div class="form-container sign-in-container">
-            <form>
+            <form action="#">
                 <h1>Sign In</h1>
-
                 <div class="social-container">
                     <a href="#"><i class="fab fa-google"></i></a>
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-github"></i></a>
                     <a href="#"><i class="fab fa-linkedin-in"></i></a>
                 </div>
-
-                <span>or use your email password</span>
-
-                <input type="email" placeholder="Email">
-                <input type="password" placeholder="Password">
-
-                <a href="#">Forgot Your Password?</a>
-
+                <span>or use your account</span>
+                
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                
+                <a href="#" class="forgot-pass">Forgot Your Password?</a>
                 <button type="submit">Sign In</button>
             </form>
         </div>
 
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back!</h1>
+                    <p>Already have an account? Log in to stay connected.</p>
+                    <button class="ghost" id="signInBtn">Sign In</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Hello, Devoloper</h1>
+                    <p>Enter your details and start your journey with us.</p>
+                    <button class="ghost" id="signUpBtn">Sign Up</button>
+                </div>
+            </div>
+        </div>
     </div>
-    
+
+    <script src="../src/js/Login_rejester.js"></script>
+
 </body>
-
-
 </html>
