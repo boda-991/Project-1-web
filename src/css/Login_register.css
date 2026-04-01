@@ -5,13 +5,15 @@
 }
 
 body {
-    background: linear-gradient(135deg, #3348a6 0%, #48315f 100%);
+    /* tasteful blue/teal gradient derived from landing.css */
+    background: linear-gradient(135deg, rgb(19,179,183) 0%, rgb(18,33,116) 100%);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
     font-family: poppins;
+    color: #fff;
 }
 
 .container {
@@ -84,7 +86,8 @@ body {
 }
 
 .overlay {
-    background: linear-gradient(to right, #663494, #455ab6);
+    /* subtle blue overlay using project blues for harmony */
+    background: linear-gradient(to right, rgb(28,80,160), rgb(35,140,200));
     color: #FFFFFF;
     position: relative;
     left: -100%;
@@ -139,6 +142,8 @@ form {
     padding: 0 50px;
     height: 100%;
     text-align: center;
+    /* ensure readable text on white form background */
+    color: rgb(18,33,116);
 }
 
 input, select {
@@ -149,26 +154,40 @@ input, select {
     width: 100%;
     border-radius: 8px;
     font-family: inherit;
+    color: rgb(18,33,116);
+}
+
+/* placeholder should be readable but subtle */
+input::placeholder, select::placeholder {
+    color: rgba(18,33,116,0.6);
 }
 
 button {
     border-radius: 20px;
-    border: 1px solid #764ba2;
-    background-color: #764ba2;
+    border: 1px solid rgb(18,33,116);
+    /* use a horizontal blue gradient similar to landing buttons */
+    background-image: linear-gradient(to right, rgb(28,80,160), rgb(35,140,200));
+    background-size: 200% auto;
+    background-position: left center;
     color: #FFFFFF;
     font-size: 12px;
     font-weight: bold;
     padding: 12px 45px;
     letter-spacing: 1px;
     text-transform: uppercase;
-    transition: transform 80ms ease-in;
+    transition: all 0.35s ease;
     cursor: pointer;
     margin-top: 15px;
+}
+
+button:hover {
+    background-position: right center;
 }
 
 button.ghost {
     background-color: transparent;
     border-color: #FFFFFF;
+    color: #FFFFFF;
 }
 
 .social-container {
@@ -177,7 +196,7 @@ button.ghost {
 
 .social-container a {
     text-decoration: none;
-    border: 0.4px solid #DDDDDD;
+    border: 0.4px solid rgba(255,255,255,0.18);
     border-radius: 50%;
     display: inline-flex;
     justify-content: center;
@@ -185,7 +204,8 @@ button.ghost {
     margin: 0 5px;
     height: 40px;
     width: 40px;
-    color: #4c3093;
+    color: rgb(28,80,160);
+    background: rgba(255,255,255,0.06);
     transition: all 0.3s ease;
 }
 
@@ -200,5 +220,5 @@ button.ghost {
 input:focus {
     outline: none;
     background-color: #fff;
-    box-shadow: 0 0 5px rgba(172, 90, 255, 0.4);
+    box-shadow: 0 0 8px rgba(28,80,160,0.28);
 }
