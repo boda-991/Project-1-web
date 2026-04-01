@@ -32,7 +32,7 @@ document.getElementById("registerForm").addEventListener("submit", function(e) {
     e.preventDefault();
 
     const name = document.getElementById("regName").value;
-    const email = document.getElementById("regEmail").value;
+    const username = document.getElementById("regEmail").value;
     const pass = document.getElementById("regPass").value;
     const confirm = document.getElementById("regConfirm").value;
     const company = document.getElementById("companyInput").value;
@@ -44,14 +44,14 @@ document.getElementById("registerForm").addEventListener("submit", function(e) {
 
     let users = JSON.parse(localStorage.getItem("users")) || [];
 
-    const exists = users.find(u => u.email === email);
+    const exists = users.find(u => u.username === username);
 
     if (exists) {
         alert("User already exists");
         return;
     }
 
-    users.push({ name, email, password: pass, company });
+    users.push({ name, username, password: pass, company });
 
     localStorage.setItem("users", JSON.stringify(users));
 
@@ -64,19 +64,19 @@ document.getElementById("registerForm").addEventListener("submit", function(e) {
 document.getElementById("loginForm").addEventListener("submit", function(e) {
     e.preventDefault();
 
-    const email = document.getElementById("logEmail").value;
+    const username = document.getElementById("logEmail").value;
     const pass = document.getElementById("logPass").value;
 
     let users = JSON.parse(localStorage.getItem("users")) || [];
 
-    const user = users.find(u => u.email === email && u.password === pass);
+    const user = users.find(u => u.username === username && u.password === pass);
 
     if (user) {
         alert("Login success: " + user.name);
-        localStorage.setItem("currentUser", JSON.stringify(user));
+        localStorage.setItem("currentUser", JSON.stringify(user));8
         window.location.href = "admin-dashboard.html";
 
     } else {
-        alert("Invalid email or password");
+        alert("Invalid username or password");
     }
 });
