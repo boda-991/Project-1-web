@@ -1,51 +1,47 @@
+
 <html>
 <head>
-    <title>Job search - jobs</title>
+    <title>Job Search - Jobs</title>
+    <link rel="stylesheet" href="../src/css/style.css">
+    <link rel="stylesheet" href="../src/css/jobs.css">
 </head>
 
 <body>
-    <nav>
-        <a href="index.html" > Home</a> |
-        <a href="My jobs.html" > My jobs </a>|
-        <a href="add-edit-job.html">Add-Edit</a> 
-    </nav>
-    <hr>
+    <div class="titleBar">
+        <a href="landing.html">
+            <img src="../src/img/talentsy.png" width="200">
+        </a>
+        <div class="tbLeftCont">
+            <a class="titleBarLink" href="My jobs.html">My applications</a>
+            <a class="titleBarLinkEnd" href="add-job.html">Post a Job</a>
+        </div>
+        <div class="tbRightCont">
+            <button class="btn">Register</button>
+            <button class="btnSecondary uLink">Login</button>
+        </div>
+    </div>
 
- <h2>Search</h2> 
+    <div class="container">
+        
+        <div class="search-container">
+            <h1>Find Your Dream Job</h1>
+            
+            <form id="searchForm">
+                <input type="text" id="searchID" placeholder="Enter Job title">
+                <input type="number" id="searchexp" placeholder="Years of Experience">
+                <button type="submit" id="srch">Search Now</button>
+            </form>
+        </div>
 
-<form>
-    <input type="text" placeholder="Job title "><br><br>
-    <input type="number" placeholder="Years of Experience "><br><br>
-    <button type="submit">Search</button>
-</form>
-<hr>
+        <hr style="margin: 40px 0; border: 0; border-top: 1px solid #ddd;">
+        
+        <h2 class="uCenter" style="margin-bottom: 30px; color: #1a237e;">All Available Jobs</h2>
+        
+        <div id="jobList">
+            </div> 
+    </div>
 
-<h2>  All Available jobs : </h2>
-
-<hr>
-
-<div>
-    <h3>Front End Developer</h3>
-    <a href="job-details.html">View Details</a>
-</div>
-<hr>
-
-<div>
-    <h3>Back End Developer</h3>
-    <a href="job-details.html">View Details</a>
-</div>
-<hr>
-
-<div>
-    <h3>Penetration Tester</h3>
-    <a href="job-details.html">View Details</a>
-</div>
-<hr>
-<div>
-    <h3>Game Developer</h3>
-     <a href="job-details.html">View Details</a>
-</div>
-
+    <script src="../src/js/utils.js"></script> 
+    <script src="../src/js/jobs.js"></script>
 </body>
 </html>
-
