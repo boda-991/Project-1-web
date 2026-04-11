@@ -27,12 +27,11 @@ function populateJobDetails(job) {
 }
 
 function findApplicationDuplicates(applications, username, jobID) {
-    for(i=0; i<applications.length; i++) {
-        if (applications[i].username === username && applications[i].jobID === jobID) {
+    for(let i=0; i<applications.length; i++) {
+        if (applications[i].username === username && applications[i].jobID === parseInt(jobID)) {
             return true;
         }
     }
-
     return false;
 }
 
@@ -62,12 +61,27 @@ function getFormData() {
     return formData;
 }
 
+function applyToJob() {
+    try {
+        apply();
+        //alert("Applied successfully");
+        closeAllDialogues();
+        openDialogue("successDBox");
+        
+    } catch (e) {
+        closeAllDialogues();
+        openDialogue("errorDBox");
+        document.querySelector("#errorMsg").innerText = e;
+        
+    }
+}
+
 function apply() {
-    let jobID = urlParams.get("jobId");
+    let jobID = parseInt(urlParams.get("jobId"));
     let formData = getFormData();
-    console.log(formData);
     let currentUser = JSON.parse(localStorage.getItem("currentUser"));
     let apps = loadTable("applications");
+
     if (findApplicationDuplicates(apps, currentUser.username, jobID)) {
         throw "you have already applied to this job";
     }

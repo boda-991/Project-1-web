@@ -52,8 +52,27 @@
                     
                 </form>
                 <br>
-                <button type="submit" class="btn" onclick="apply()">Apply Now</button>
+                <button type="submit" class="btn" onclick="applyToJob()">Apply Now</button>
                 <button class="btnSecondary" onclick="closeDialogue(this.parentElement.id)">Cancel</button>
+            </div>
+
+            <div class="dBox" id="errorDBox">
+                    <div class="applyFormHeader">
+                            <h3>Error</h3> <p onclick="closeDialogue('errorDBox')">&times;</p>
+                        </div>
+                        <hr>
+                        <p>Couldn't apply for this job because we encountered the following error(s):</p>
+                        <p id="errorMsg">Error Message</p>
+                        <button class="btnSecondary" onclick="closeDialogue('errorDBox')">Close</button>
+            </div>
+
+            <div class="dBox" id="successDBox">
+                    <div class="applyFormHeader">
+                            <h3>Success</h3> <p onclick="closeDialogue('successDBox')">&times;</p>
+                        </div>
+                        <hr>
+                        <p>Your application has been submitted successfully!</p>
+                        <button class="btnSecondary" onclick="closeDialogue('successDBox')">Close</button>
             </div>
         </div>
     </div>
