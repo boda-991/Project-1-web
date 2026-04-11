@@ -49,20 +49,20 @@ tr:hover {
 }
 
 .btn-danger {
-    background-color: #e74c3c !important;
+    background-color: #e74c3c ;
 }
 
 .btn-danger:hover {
-    background-color: #c0392b !important;
+    background-color: #c0392b ;
 }
 
 .no-data {
     text-align: center;
-    padding: 50px !important;
+    padding: 50px ;
     color: #999;
     font-family: "nexa-light";
 }
 
 .btn-danger {
-    background-color: #e74c3c !important;
+    background-color: #e74c3c ;
 }
