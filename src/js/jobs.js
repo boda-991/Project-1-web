@@ -3,7 +3,7 @@ function displayAlljobs() {
   let list = document.getElementById("jobList") ;
   if (jobs.length === 0) { 
       
-      list.innerHTML = "<p style='text-align:center;'>There are no available jobs at the moment.</p>";
+      list.innerHTML = "<p style='text-align:center;' class='no-results'>There are no available jobs at the moment.</p>";
       return; // terminate the function
   }
 
@@ -14,7 +14,8 @@ function displayAlljobs() {
     let jobCard = `
             <div class="job-card">
                 <h3>${job.title}</h3>
-                <a href="job-details.html?jobId=${i}">View Details</a>
+                 <p>Experience: ${job.experience} Years</p>
+                <a href="job-details.html?jobId=${i}" class="view-btn">View Details</a>
             </div>
         `;
         
@@ -58,10 +59,10 @@ function filterMyjobs(searchValue , expValue){
 function renderJobs(Array){
     let list = document.getElementById("jobList"); // the place of filtered jobs
     list.innerHTML = ""; // delete all prev jobs
-    if(Array.length===0){
-        list.innerHTML = "<p>there is no aval jobs </p>"
-        return ;
-    }
+   if (Array.length === 0) {
+    list.innerHTML = "<p class='no-results'  style='text-align:center;' >There are no available jobs at the moment.</p>";
+    return;
+}
     
   
 
