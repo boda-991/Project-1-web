@@ -36,6 +36,20 @@ document.getElementById("registerForm").addEventListener("submit", function(e) {
     const pass = document.getElementById("regPass").value;
     const confirm = document.getElementById("regConfirm").value;
     const company = document.getElementById("companyInput").value;
+    const accountType = document.getElementById("accountType").value;
+    let is_admin = false;
+
+    if (accountType === "admin" && company.trim() === "") {
+        alert("Company name is required for admin accounts");
+        return;
+    }
+
+    if (accountType === "admin") {
+        is_admin = true;
+    } else if (accountType === "user") {
+        is_admin = false;
+    }
+
 
     if (pass !== confirm) {
         alert("Passwords do not match");
@@ -51,7 +65,7 @@ document.getElementById("registerForm").addEventListener("submit", function(e) {
         return;
     }
 
-    users.push({ name, username, password: pass, company });
+    users.push({ name, username, password: pass, company, is_admin });
 
     localStorage.setItem("users", JSON.stringify(users));
 
