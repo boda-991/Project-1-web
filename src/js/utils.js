@@ -9,6 +9,14 @@ function openDialogue(idd) {
     document.querySelector(`#${idd}`).style.display = "block";
 }
 
+function closeAllDialogues() {
+    let dialogues = document.querySelectorAll(".dBox");
+    dialogues.forEach(d => {
+        d.style.display = "none";
+        d.parentElement.parentElement.style.display = "none";
+    });
+}
+
 function saveTable(tableName, tableObj) {
     localStorage.setItem(tableName, JSON.stringify(tableObj));
 }
