@@ -1,0 +1,68 @@
+table {
+    border-collapse: collapse; 
+    width: 100%;
+    margin-top: 20px;
+    background-color: white;
+}
+
+th {
+    background-color: var(--accent-color); 
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd; 
+    color: #333;
+    text-align: center;
+}
+
+tr:hover {
+    background-color: #f9f9f9;
+}
+
+.Status1{
+    color: rgb(135, 204, 32);
+}
+
+.Status2{
+    color: red;
+}
+
+#application-table td[colspan="5"] {
+    padding: 40px;
+    font-size: 1.2rem;
+    color: #888;
+    background-color: #fcfcfc;
+}
+
+.btn-withdraw {
+    background-color: #ff4d4d;
+    margin-left: 8px;
+}
+
+.btn-withdraw:hover {
+    background-color: #ff3333;
+    box-shadow: 0 10px 10px rgba(255, 77, 77, 0.3);
+}
+
+.btn-danger {
+    background-color: #e74c3c ;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b ;
+}
+
+.no-data {
+    text-align: center;
+    padding: 50px ;
+    color: #999;
+    font-family: "nexa-light";
+}
+
+.btn-danger {
+    background-color: #e74c3c ;
+}

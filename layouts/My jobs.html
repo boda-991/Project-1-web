@@ -1,57 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>My Jobs</title>
+    <link rel="stylesheet" href="..//src/css/style.css">
+    <link rel="stylesheet" href="..//src/css/myJobs.css">
 </head>
 <body>
-
-<nav>
-    <a href="index.html">Home</a> |
-    <a href="jobs.html">Jobs</a> |
-    <a href="Login_register.html">Logout</a>
-</nav>
-
-<h1>My Applied Jobs</h1>
-<table border="1" width="50%" cellpadding="10">
+<div class="titleBar">
+    <a href="landing.html">
+            <img src="../src/img/talentsy.png" width="250">
+    </a>
+    <div class="tbLeftCont">
+        <a href="index.html" class="titleBarLink">Home</a>
+        <a href="jobs.html" class="titleBarLink">Jobs</a>
+        <a href="login.html" class="titleBarLinkEnd">Logout</a>
+    </div>
+</div>
+<div class="container">
+    <h1 class="jobt">My Applied Jobs</h1>
+</div>
+<table class="container">
     <thead>
         <tr>
             <th>Job Title</th>
             <th>Company Name</th>
             <th>Application Date</th>
             <th>Job Status</th>
-            <th>Details</th>
+            <th>Actions</th>
         </tr>
     </thead>
-    <tbody>
-        <tr>
-            <td>Front End Developer</td>
-            <td>Frontend ltd</td>
-            <td>2026/8/12</td>
-            <td>open</td>
-            <td><a href="job-details.html" class="view-btn">View Details</a></td>
-        </tr>
-        <tr>
-            <td>Back End Developer</td>
-            <td>Frontend ltd</td>
-            <td>2026/8/12</td>
-            <td>open</td>
-            <td><a href="job-details.html" class="view-btn">View Details</a></td>
-        </tr>
-        <tr>
-            <td>Penetration Tester</td>
-            <td>Frontend ltd</td>
-            <td>2026/8/12</td>
-            <td>open</td>
-            <td><a href="job-details.html" class="view-btn">View Details</a></td>
-        </tr>
-        <tr>
-            <td>Game Developer</td>
-            <td>Frontend ltd</td>
-            <td>2026/8/12</td>
-            <td>open</td>
-            <td><a href="job-details.html" class="view-btn">View Details</a></td>
-        </tr>
+    <tbody id="application-table">
     </tbody>
 </table>
+<script src="..//src/js/my-jobs.js"></script> 
 </body>
 </html>

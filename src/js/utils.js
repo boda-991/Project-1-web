@@ -10,7 +10,7 @@ function openDialogue(idd) {
 }
 
 function saveTable(tableName, tableObj) {
-    localStorage.setItem("tableName", JSON.stringify(tableObj));
+    localStorage.setItem(tableName, JSON.stringify(tableObj));
 }
 
 function loadTable(tableName) {
