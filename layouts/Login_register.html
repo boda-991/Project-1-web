@@ -12,20 +12,21 @@
     <div class="container" id="container">
         
         <div class="form-container sign-up-container">
-            <form action="#">
+            <form id="registerForm">
                 <h1>Create Account</h1>
+
                 <div class="social-container">
                     <a href="#"><i class="fab fa-google"></i></a>
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-github"></i></a>
                     <a href="#"><i class="fab fa-linkedin-in"></i></a>
                 </div>
-                <span>or use your email for registration</span>
+                <span>or use your username for registration</span>
                 
-                <input type="text" placeholder="Name" required>
-                <input type="email" placeholder="Email" required>
-                <input type="password" placeholder="Password" required>
-                <input type="password" placeholder="Confirm Password" required>
+                <input id="regName" type="text" placeholder="Name" required>
+                <input id="regEmail" type="username" placeholder="username" required>
+                <input id="regPass" type="password" placeholder="Password" required>
+                <input id="regConfirm" type="password" placeholder="Confirm Password" required>
 
                 <div class="selection-group">
                     <label for="accountType">Account Type</label>
@@ -36,7 +37,7 @@
                 </div>
 
                 <div id="companyField" style="display:none; width: 100%;">
-                    <input type="text" placeholder="Company Name">
+                    <input id="companyInput" type="text" placeholder="Company Name">
                 </div>
 
                 <button type="submit">Sign Up</button>
@@ -44,7 +45,7 @@
         </div>
 
         <div class="form-container sign-in-container">
-            <form action="#">
+            <form id="loginForm">
                 <h1>Sign In</h1>
                 <div class="social-container">
                     <a href="#"><i class="fab fa-google"></i></a>
@@ -54,11 +55,13 @@
                 </div>
                 <span>or use your account</span>
                 
-                <input type="email" placeholder="Email" required>
-                <input type="password" placeholder="Password" required>
+                <input id="logEmail" type="username" placeholder="username" required>
+                <input id="logPass" type="password" placeholder="Password" required>
                 
                 <a href="#" class="forgot-pass">Forgot Your Password?</a>
                 <button type="submit">Sign In</button>
+                <p id="login_OrNot"></p>
+
             </form>
         </div>
 
@@ -78,7 +81,7 @@
         </div>
     </div>
 
-    <script src="../src/js/Login_rejester.js"></script>
+    <script src="../src/js/Login_register.js"></script>
 
 </body>
 </html>
