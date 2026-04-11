@@ -9,16 +9,21 @@
 <body>
     <div class="titleBar">
         <a href="landing.html">
-            <img src="../src/img/talentsy.png" width="200">
+            <img src="../src/img/talentsy.png" width="250">
         </a>
         <div class="tbLeftCont">
-            <a class="titleBarLink" href="My jobs.html">My applications</a>
-            <a class="titleBarLinkEnd" href="add-job.html">Post a Job</a>
+            <a class="titleBarLink" href="jobs.html" id="jobs-link">Find Jobs</a>
+            <a class="titleBarLink" href="My jobs.html" id="my-jobs-link">My Jobs</a>
+            <a class="titleBarLink" href="admin-dashboard.html" id="admin-dashboard-link">My Job Posts</a>
+            <a class="titleBarLinkEnd" href="add-job.html" id="post-job-link">Post a Job</a>
         </div>
         <div class="tbRightCont">
-            <button class="btn">Register</button>
-            <button class="btnSecondary uLink">Login</button>
+            <a href="../layouts/Login_register.html" id="login-link">
+                 <button class="btn">Sign-Up</button>
+            </a>
+            <button id="btn-logout" class="btnSecondary" onclick="logout()">Logout</button>
         </div>
+        
     </div>
 
     <div class="container">
@@ -43,5 +48,6 @@
 
     <script src="../src/js/utils.js"></script> 
     <script src="../src/js/jobs.js"></script>
+    <script src="../src/js/roles.js"></script>
 </body>
 </html>

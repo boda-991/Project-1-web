@@ -7,15 +7,23 @@
 </head>
 <body>
 <div class="titleBar">
-    <a href="landing.html">
+        <a href="landing.html">
             <img src="../src/img/talentsy.png" width="250">
-    </a>
-    <div class="tbLeftCont">
-        <a href="index.html" class="titleBarLink">Home</a>
-        <a href="jobs.html" class="titleBarLink">Jobs</a>
-        <a href="login.html" class="titleBarLinkEnd">Logout</a>
+        </a>
+        <div class="tbLeftCont">
+            <a class="titleBarLink" href="jobs.html" id="jobs-link">Find Jobs</a>
+            <a class="titleBarLink" href="My jobs.html" id="my-jobs-link">My Jobs</a>
+            <a class="titleBarLink" href="admin-dashboard.html" id="admin-dashboard-link">My Job Posts</a>
+            <a class="titleBarLinkEnd" href="add-job.html" id="post-job-link">Post a Job</a>
+        </div>
+        <div class="tbRightCont">
+            <a href="../layouts/Login_register.html" id="login-link">
+                 <button class="btn">Sign-Up</button>
+            </a>
+            <button id="btn-logout" class="btnSecondary" onclick="logout()">Logout</button>
+        </div>
+        
     </div>
-</div>
 <div class="container">
     <h1 class="jobt">My Applied Jobs</h1>
 </div>
