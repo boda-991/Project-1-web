@@ -26,9 +26,9 @@ function populateJobDetails(job) {
     
 }
 
-function findApplicationDuplicates(applications, username) {
+function findApplicationDuplicates(applications, username, jobID) {
     for(i=0; i<applications.length; i++) {
-        if (applications[i].username === username) {
+        if (applications[i].username === username && applications[i].jobID === jobID) {
             return true;
         }
     }
@@ -63,18 +63,18 @@ function getFormData() {
 }
 
 function apply() {
-    let jobID = currentJobID;
+    let jobID = urlParams.get("jobId");
     let formData = getFormData();
     console.log(formData);
     let currentUser = JSON.parse(localStorage.getItem("currentUser"));
     let apps = loadTable("applications");
-    if (findApplicationDuplicates(apps, currentUser.username)) {
+    if (findApplicationDuplicates(apps, currentUser.username, jobID)) {
         throw "you have already applied to this job";
     }
-    
-    let appEntry = {"jobID": toString(jobID),
+    //jobID as an integer, not a string
+    let appEntry = {"jobID": parseInt(jobID),
         "username": currentUser.username,
-        "date": Date.now,
+        "date": Date.now(),
         "formData": formData,
     }
 
