@@ -1,42 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-        <head>
-             <meta charset="UTF-8">
-            <title>Add job</title>
-           
-        </head>
-        <body>
-            
-        <nav class="top-text">
-            <a class="t1" href="index.html" >Home</a> |
-            <a class="t1" href="jobs.html">Jobs</a> |
-            <a class="t1" href="My jobs.html">My jobs</a>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Job</title>
+    <link rel="stylesheet" href="../src/css/style.css">
+    <link rel="stylesheet" href="../src/css/admin.css">
+</head>
+<body class="admin-page">
+    <div class="titleBar">
+        <a href="landing.html">
+            <img src="../src/img/talentsy.png" width="220" alt="Talentsy">
+        </a>
+        <div class="tbLeftCont">
+            <a class="titleBarLink" href="add-edit-job.html">Admin Home</a>
+            <a class="titleBarLink" href="admin-dashboard.html">Dashboard</a>
+            <a class="titleBarLinkEnd" href="edit-job.html">Edit Jobs</a>
+        </div>
+        <div class="tbRightCont">
+            <a class="btnSecondary uLink" href="jobs.html">View Public Jobs</a>
+        </div>
+    </div>
 
-        </nav>
-            <br>
-            <h2>Add job</h2>
-         <br>
-        <form id="jobform">
-            <label class="text-box"><strong>Job Title</strong></label>
-            <input type="text" id="jtitle" placeholder="Add Title"> 
-            <br><br>
-            <label class="text-box"><strong>Company</strong></label>
-            <input type="text" id="companyP" placeholder="Add Company">     
-            <br><br>
-            <label class="date-box"><strong>Posted On</strong></label>
-            <input type="date" id="dateP">
-            <br><br>
-            <label class="text-box"><strong>Job Description</strong></label>
-            <input type="text" id="jobDescP"placeholder="Add Description">            
-            
-            <br><br>
-            <label class="sentences-box"><h4> Key Responsibilities</h4></label>
-            <textarea type="text" placeholder="Add Key Responsibilities"></textarea>
-            <br><br>
-            <label class="sentences-box"><h4>Required Skills and Qualifications</h4></label>
-            <textarea type="text" id="skills" placeholder="Add Skills and Qualifications"></textarea>
-            <br><hr>
-        </form>
-            <button class="submit-button" type="submit">Add</button>
-        </body>    
+    <main class="container admin-shell">
+        <section class="admin-section admin-form-section">
+            <div class="admin-section__header">
+                <div>
+                    <p class="admin-kicker">Create Listing</p>
+                    <h1>Add a new job</h1>
+                    <p class="admin-lead">Fill in the essential role details. Any compatibility fields used by the public jobs pages will be safely defaulted behind the scenes.</p>
+                </div>
+                <img src="../src/img/job_ico.png" alt="" width="72">
+            </div>
+
+            <div id="form-feedback" class="notice" hidden></div>
+
+            <form id="job-form" class="admin-form">
+                <div class="form-grid">
+                    <label class="form-field">
+                        <span>Job Title</span>
+                        <input type="text" id="jtitle" placeholder="Frontend Developer" required>
+                    </label>
+
+                    <label class="form-field">
+                        <span>Company</span>
+                        <input type="text" id="companyP" placeholder="Talentsy" required>
+                    </label>
+
+                    <label class="form-field">
+                        <span>Posted On</span>
+                        <input type="date" id="dateP" required>
+                    </label>
+
+                    <label class="form-field form-field--full">
+                        <span>Job Description</span>
+                        <textarea id="jobDescP" rows="5" placeholder="Describe the role, its impact, and who would thrive in it." required></textarea>
+                    </label>
+
+                    <label class="form-field form-field--full">
+                        <span>Key Responsibilities</span>
+                        <textarea id="responsibilitiesP" rows="5" placeholder="Write one responsibility per line."></textarea>
+                    </label>
+
+                    <label class="form-field form-field--full">
+                        <span>Required Skills and Qualifications</span>
+                        <textarea id="skills" rows="5" placeholder="Write one skill or qualification per line."></textarea>
+                    </label>
+                </div>
+
+                <div class="form-actions">
+                    <button class="btn" type="submit">Save Job</button>
+                    <a class="btnSecondary uLink" href="admin-dashboard.html">Back to Dashboard</a>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <script src="../src/js/utils.js"></script>
+    <script src="../src/js/job-form.js"></script>
+    <script src="../src/js/add-job.js"></script>
+</body>
 </html>

@@ -1,24 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-             <meta charset="UTF-8">
-            <title>Add-Edit jobs</title>
-           
-
-    </head>
-    <body>
-
-        <div class="top-text">
-            <a class="t1" href="index.html" >Home</a> |
-            <a class="t1" href="jobs.html">Jobs</a> 
-            <br><br>
-            <h3><a class="t1" href="add-job.html">Add job</a> </h3>
-            <h3><a class="t1" href="edit-job.html">Edit job</a></h3>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Job Tools</title>
+    <link rel="stylesheet" href="../src/css/style.css">
+    <link rel="stylesheet" href="../src/css/admin.css">
+</head>
+<body class="admin-page">
+    <div class="titleBar">
+        <a href="landing.html">
+            <img src="../src/img/talentsy.png" width="220" alt="Talentsy">
+        </a>
+        <div class="tbLeftCont">
+            <a class="titleBarLink" href="admin-dashboard.html">Dashboard</a>
+            <a class="titleBarLink" href="add-job.html">Add Job</a>
+            <a class="titleBarLinkEnd" href="edit-job.html">Edit Job</a>
         </div>
-    
-    
-    
-    
-    
-        </body>    
+        <div class="tbRightCont">
+            <a class="btnSecondary uLink" href="jobs.html">View Public Jobs</a>
+        </div>
+    </div>
+
+
+
+    <main class="container admin-shell">
+        <section class="admin-hero">
+            <div class="admin-hero__copy">
+                <p class="admin-kicker">Admin Workspace</p>
+                <h1>Keep your hiring pages polished and your roles up to date.</h1>
+                <p class="admin-lead">This hub gives you the same branded Talentsy layout as the public site while keeping job management quick, clear, and consistent.</p>
+                <div class="admin-actions">
+                    <a class="btn" href="admin-dashboard.html">Open Dashboard</a>
+                    <a class="btnSecondary uLink" href="add-job.html">Create a Job</a>
+                </div>
+            </div>
+            <div class="admin-hero__media">
+                <img src="../src/img/graphic2.png" alt="Talentsy admin hero graphic">
+            </div>
+        </section>
+
+        <section class="admin-grid">
+            <article class="admin-card card3">
+                <div class="admin-card__icon">
+                    <img src="../src/img/company_ico.png" alt="" width="48">
+                </div>
+                <h2>Admin Dashboard</h2>
+                <p>Review your active roles, monitor openings, and jump straight into edit or delete actions.</p>
+                <a class="btn uLink" href="admin-dashboard.html">Go to Dashboard</a>
+            </article>
+
+            <article class="admin-card card3">
+                <div class="admin-card__icon">
+                    <img src="../src/img/job_ico.png" alt="" width="48">
+                </div>
+                <h2>Add Job</h2>
+                <p>Create a new listing with the essential information needed for the public jobs experience.</p>
+                <a class="btn uLink" href="add-job.html">Add a New Job</a>
+            </article>
+
+            <article class="admin-card card3">
+                <div class="admin-card__icon">
+                    <img src="../src/img/worker_ico.png" alt="" width="48">
+                </div>
+                <h2>Edit or Delete</h2>
+                <p>Update a listing, refresh the content, or remove it from active listings without breaking saved references.</p>
+                <a class="btn uLink" href="edit-job.html">Manage Existing Jobs</a>
+            </article>
+        </section>
+    </main>
+</body>
 </html>

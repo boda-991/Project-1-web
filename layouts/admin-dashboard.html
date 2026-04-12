@@ -1,98 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="../src/css/style.css">
+    <link rel="stylesheet" href="../src/css/admin.css">
 </head>
-<body>
-    <nav>
-        <a href="index.html">Home</a> |
-        <a href="admin-dashboard.html">Admin Dashboard</a> |
-        <a href="add-edit-job.html">Add Job</a> |
-        <a href="Login_register.html">Logout</a>
-    </nav>
-
-    <h1>Admin Dashboard</h1>
-    <p>Manage your company's job postings.</p>
-
-    <hr>
-
-    <section>
-        <h2>Overview</h2>
-        <div>
-            <h3>Total Jobs: 6</h3>
-            <h3>Open Jobs: 4</h3>
-            <h3>Closed Jobs: 2</h3>
-            <h3>Total Applications: 18</h3>
+<body class="admin-page">
+    <div class="titleBar">
+        <a href="landing.html">
+            <img src="../src/img/talentsy.png" width="220" alt="Talentsy">
+        </a>
+        <div class="tbLeftCont">
+            <a class="titleBarLink" href="add-edit-job.html">Admin Home</a>
+            <a class="titleBarLink" href="add-job.html">Add Job</a>
+            <a class="titleBarLinkEnd" href="edit-job.html">Edit Jobs</a>
         </div>
-    </section>
+        <div class="tbRightCont">
+            <a class="btnSecondary uLink" href="jobs.html">View Public Jobs</a>
+        </div>
+    </div>
 
-    <hr>
 
-    <section>
-        <h2>Company Jobs</h2>
-        <table border="1" cellpadding="6">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Title</th>
-                    <th>Company</th>
-                    <th>Salary</th>
-                    <th>Status</th>
-                    <th>Years Exp</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>101</td>
-                    <td>Frontend Developer</td>
-                    <td>Frontend Ltd</td>
-                    <td>$2,000</td>
-                    <td>Open</td>
-                    <td>2</td>
-                    <td>
-                        <a href="add-edit-job.html">Edit</a> |
-                        <a href="#">Delete</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>102</td>
-                    <td>Backend Developer</td>
-                    <td>Backend Co</td>
-                    <td>$2,500</td>
-                    <td>Open</td>
-                    <td>3</td>
-                    <td>
-                        <a href="add-edit-job.html">Edit</a> |
-                        <a href="#">Delete</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>103</td>
-                    <td>UI/UX Designer</td>
-                    <td>Design Hub</td>
-                    <td>$1,800</td>
-                    <td>Closed</td>
-                    <td>1</td>
-                    <td>
-                        <a href="add-edit-job.html">Edit</a> |
-                        <a href="#">Delete</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>104</td>
-                    <td>QA Engineer</td>
-                    <td>Quality Works</td>
-                    <td>$1,700</td>
-                    <td>Open</td>
-                    <td>2</td>
-                    <td>
-                        <a href="add-edit-job.html">Edit</a> |
-                        <a href="#">Delete</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
+    <main class="container admin-shell">
+        <section class="admin-hero admin-hero--compact">
+            <div class="admin-hero__copy">
+                <p class="admin-kicker">Control Center</p>
+                <h1>Manage your job posts from one clean dashboard.</h1>
+                <p class="admin-lead">Track hiring activity, move quickly between add and edit flows, and keep public listings in sync with the rest of the Talentsy experience.</p>
+                <div class="admin-actions">
+                    <a class="btn" href="add-job.html">Post a New Job</a>
+                    <a class="btnSecondary uLink" href="edit-job.html">Update Existing Jobs</a>
+                </div>
+            </div>
+            <div class="admin-hero__media">
+                <img src="../src/img/graphic.png" alt="Admin dashboard illustration">
+            </div>
+        </section>
+
+        <section class="stats-grid" aria-label="Dashboard statistics">
+            <article class="stat-card">
+                <div class="stat-card__icon">
+                    <img src="../src/img/job_ico.png" alt="" width="48">
+                </div>
+                <div>
+                    <p class="stat-card__label">Total Jobs</p>
+                    <h2 id="totalJobs">0</h2>
+                </div>
+            </article>
+
+            <article class="stat-card">
+                <div class="stat-card__icon">
+                    <img src="../src/img/company_ico.png" alt="" width="48">
+                </div>
+                <div>
+                    <p class="stat-card__label">Open Jobs</p>
+                    <h2 id="openJobs">0</h2>
+                </div>
+            </article>
+
+            <article class="stat-card">
+                <div class="stat-card__icon">
+                    <img src="../src/img/company_ico_symbolic.png" alt="" width="32">
+                </div>
+                <div>
+                    <p class="stat-card__label">Closed Jobs</p>
+                    <h2 id="closedJobs">0</h2>
+                </div>
+            </article>
+
+            <article class="stat-card">
+                <div class="stat-card__icon">
+                    <img src="../src/img/worker_ico.png" alt="" width="48">
+                </div>
+                <div>
+                    <p class="stat-card__label">Applications</p>
+                    <h2 id="totalApplications">0</h2>
+                </div>
+            </article>
+        </section>
+
+        <section class="admin-section">
+            <div class="admin-section__header">
+                <div>
+                    <p class="admin-kicker">Listings</p>
+                    <h2>Active company jobs</h2>
+                </div>
+                <a class="btn" href="add-job.html">Add Another Job</a>
+            </div>
+
+            <div id="dashboardEmptyState" class="empty-state" hidden>
+                <img src="../src/img/talentsy_transparent.png" alt="Talentsy logo" width="140">
+                <h3>No active jobs yet</h3>
+                <p>Create your first role and it will immediately appear in the admin dashboard and public listings.</p>
+                <a class="btn" href="add-job.html">Create Your First Job</a>
+            </div>
+
+            <div class="admin-table-wrap">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Job Title</th>
+                            <th>Company</th>
+                            <th>Posted On</th>
+                            <th>Status</th>
+                            <th>Experience</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminJobTable"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="../src/js/utils.js"></script>
+    <script src="../src/js/admin.js"></script>
 </body>
 </html>

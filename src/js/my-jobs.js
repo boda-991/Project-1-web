@@ -21,12 +21,14 @@ function displayAppliedJobs() {
         const jobDetails = allJobs[app.jobID]; 
         if (jobDetails) {
             const row = document.createElement('tr');
-            const statusClass = 'Status1'; 
+            const isArchived = jobDetails.deleted === true;
+            const statusClass = isArchived ? 'Status2' : 'Status1';
+            const statusText = isArchived ? 'Archived' : 'Pending';
             row.innerHTML = `
                 <td>${jobDetails.title}</td>
                 <td>${jobDetails.company}</td>
                 <td>${new Date(app.date).toLocaleDateString()}</td>
-                <td class="${statusClass}">Pending</td>
+                <td class="${statusClass}">${statusText}</td>
                 <td>
                     <button onclick="withdrawApp(${index})" class="btn btn-danger">Withdraw</button>
                 </td>

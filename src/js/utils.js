@@ -1,5 +1,4 @@
 function closeDialogue(idd) {
-    //console.log(document.querySelector(`#${idd}`).parentElement.parentElement);
     document.querySelector(`#${idd}`).style.display = "none";
     document.querySelector(`#${idd}`).parentElement.parentElement.style.display = "none";
 }
@@ -22,5 +21,17 @@ function saveTable(tableName, tableObj) {
 }
 
 function loadTable(tableName) {
-    return JSON.parse(localStorage.getItem(tableName));
+    const tableValue = localStorage.getItem(tableName);
+
+    if (!tableValue) {
+        return [];
+    }
+
+    try {
+        const parsedValue = JSON.parse(tableValue);
+        return Array.isArray(parsedValue) ? parsedValue : [];
+    } catch (error) {
+        console.error(`Unable to parse table "${tableName}".`, error);
+        return [];
+    }
 }
