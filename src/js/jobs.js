@@ -1,78 +1,93 @@
-function getActiveJobs() {
-    return loadTable("jobs")
-        .map(function(job, index) {
-            if (!job || job.deleted) {
-                return null;
-            }
+function displayAlljobs() {
+  let jobs = loadTable("jobs");
+     
+  let list = document.getElementById("jobList") ;
+ let activeJobs = [];
+  for (let i = 0; i < jobs.length; i++) {
+      if (!jobs[i].deleted) {
+          let jobCopy = jobs[i];
+          jobCopy.originalIndex = i; 
+          activeJobs.push(jobCopy);
+      }
+  }
 
-            return Object.assign({}, job, { originalIndex: index });
-        })
-        .filter(function(job) {
-            return Boolean(job);
-        });
-}
+  if (activeJobs.length === 0) { 
+      list.innerHTML = "<p class='no-results' style='text-align:center;'>There are no available jobs at the moment.</p>";
+      return;
+  }
 
-function renderJobs(jobArray) {
-    const list = document.getElementById("jobList");
-    list.innerHTML = "";
-
-    if (jobArray.length === 0) {
-        list.innerHTML = "<p class='no-results'>There are no available jobs at the moment.</p>";
-        return;
-    }
-
-    jobArray.forEach(function(job) {
-        const experienceText = `${job.experience || 0} Years Experience`;
-        const companyText = job.company ? `<p>${job.company}</p>` : "";
-
-        list.innerHTML += `
+  list.innerHTML = "";
+  for (let i = 0; i < activeJobs.length; i++) {
+    let job = activeJobs[i];
+    let jobCard = `
             <div class="job-card">
                 <h3>${job.title}</h3>
-                ${companyText}
-                <p>${experienceText}</p>
+                <p>Experience: ${job.experience} Years</p>
                 <a href="job-details.html?jobId=${job.originalIndex}" class="view-btn">View Details</a>
             </div>
         `;
-    });
-}
+    list.innerHTML += jobCard;
+  }
+} 
+window.onload = displayAlljobs ; 
 
-function displayAllJobs() {
-    renderJobs(getActiveJobs());
-}
+const search = document.getElementById("searchForm") ;
+search.addEventListener("submit" ,  function(e) {
+    e.preventDefault() ;
+    let input = document.getElementById("searchID").value;
+    let expyears = document.getElementById("searchexp").value ; 
+    filterMyjobs(input , expyears) ;
+} ) ;
 
-function filterMyJobs(searchValue, expValue) {
-    const filtered = getActiveJobs().filter(function(job) {
-        const matchesTitle = job.title.toLowerCase().includes(searchValue.toLowerCase());
-        const numericExp = Number(expValue);
-        const matchesExp = expValue === "" || job.experience <= numericExp;
-
-        return matchesTitle && matchesExp;
-    });
-
-    renderJobs(filtered);
-}
-
-document.addEventListener("DOMContentLoaded", function() {
-    const searchForm = document.getElementById("searchForm");
-    const searchInput = document.getElementById("searchID");
-    const expInput = document.getElementById("searchexp");
-
-    if (!searchForm || !searchInput || !expInput) {
-        return;
-    }
-
-    displayAllJobs();
-
-    searchForm.addEventListener("submit", function(event) {
-        event.preventDefault();
-        filterMyJobs(searchInput.value, expInput.value);
-    });
-
-    searchInput.addEventListener("input", function() {
-        filterMyJobs(searchInput.value, expInput.value);
-    });
-
-    expInput.addEventListener("input", function() {
-        filterMyJobs(searchInput.value, expInput.value);
-    });
+const searchInput = document.getElementById("searchID");
+searchInput.addEventListener("input", function() {
+    let input = searchInput.value; 
+    let expyears = document.getElementById("searchexp").value;
+    filterMyjobs(input, expyears);
 });
+
+function filterMyjobs(searchValue , expValue){
+    let jobs = loadTable("jobs");
+    let filtered = [] ; //the filtered jobs
+
+    for(let i = 0 ; i < jobs.length ; i++){
+        let job = jobs[i] ;
+        let matchJobTitle = job.title.toLowerCase().includes(searchValue.toLowerCase());
+        let matchesExp = (expValue === "") || (parseInt(job.experience) <= parseInt(expValue));
+        let isNotDeleted = !job.deleted; 
+
+        if(matchJobTitle && matchesExp && isNotDeleted){
+            job.originalIndex = i;
+          filtered.push(job); 
+        }
+    }
+          renderJobs(filtered) ; //display only the matches result
+}
+function renderJobs(Array){
+    let list = document.getElementById("jobList"); // the place of filtered jobs
+    list.innerHTML = " "; // delete all prev jobs
+    
+   if (Array.length === 0) {
+    list.innerHTML = "<p class='no-results'  style='text-align:center;' >There are no available jobs at the moment.</p>";
+    return;
+}
+
+    for(let i = 0 ; i<Array.length ; i++) {
+
+        let job = Array[i] ;
+       let idToSend;
+
+       if (job.originalIndex !== undefined) {
+    idToSend = job.originalIndex; 
+} else {
+    idToSend = i; 
+}
+        list.innerHTML += `
+    <div class="job-card">
+        <h3>${job.title}</h3>
+        <p>Experience: ${job.experience} Years</p>
+        <a href="job-details.html?jobId=${idToSend}" class="view-btn">View Details</a>
+    </div>
+`;
+    }
+}
