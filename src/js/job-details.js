@@ -1,28 +1,8 @@
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
-const currentJobID = Number(urlParams.get("jobId"));
 
-function escapeHtml(value) {
-    return String(value)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#39;");
-}
+let currentJobID = urlParams.get("jobId");
 
-function normalizeList(value) {
-    if (Array.isArray(value)) {
-        return value.filter(Boolean);
-    }
-
-    return String(value || "")
-        .split(/\r?\n/)
-        .map(function(item) {
-            return item.trim();
-        })
-        .filter(Boolean);
-}
 
 function fetchJobDetails(jobID) {
     const jobs = loadTable("jobs");
@@ -35,25 +15,25 @@ function fetchJobDetails(jobID) {
     return job;
 }
 
-function buildListSection(title, items) {
-    if (items.length === 0) {
+function parseList(listArr) {
+    if (!listArr || listArr.length === 0) {
+        return "<p>None specified.</p>";
+    }
+
+    return "<ul>" + listArr.map(item => `<li>${item}</li>`).join("") + "</ul>";
+}
+
+function parseBreaks(text) {
+    if (!text) {
         return "";
     }
 
-    return `
-        <h4>${escapeHtml(title)}</h4>
-        <ul>
-            ${items.map(function(item) {
-                return `<li>${escapeHtml(item)}</li>`;
-            }).join("")}
-        </ul>
-    `;
+    return text.replace(/\n/g, "<br>");
 }
 
 function populateJobDetails(job) {
-    const applyButton = document.querySelector("button.btn[onclick*='openDialogue']");
-    const jobDescCont = document.querySelector("#jobDescCont");
-
+    let jobDescCont = document.querySelector("#jobDescCont");
+    let applyButton = document.querySelector("#applyBtn");
     if (!job) {
         document.querySelector("#jobTitle").innerText = "Job Not Available";
         document.querySelector("#companyName").innerText = "This listing is no longer active.";
@@ -70,25 +50,19 @@ function populateJobDetails(job) {
         return;
     }
 
-    const formattedDate = job.date ? new Date(job.date).toLocaleDateString() : "Not set";
-    const responsibilities = normalizeList(job.responsibilities);
-    const skills = normalizeList(job.skills);
+    document.querySelector("#jobTitle").innerText = job.title;
+    document.querySelector("#companyName").innerText = job.company;
+    document.querySelector("#workingHours").innerText = job.workingHourse;
+    const formattedDate = new Date(job.date).toLocaleDateString();
 
-    document.querySelector("#jobTitle").innerText = job.title || "Untitled role";
-    document.querySelector("#companyName").innerText = job.company || "Talentsy";
-    document.querySelector("#workingHours").innerText = job.workingHourse || "Full Time";
     document.querySelector("#jobDate").innerText = formattedDate;
-    jobDescCont.innerHTML = `
-        <p>Job Description:</p>
-        <p>${escapeHtml(job.description || "No description available yet.")}</p>
-        ${buildListSection("Key Responsibilities", responsibilities)}
-        ${buildListSection("Required Skills and Qualifications", skills)}
-    `;
+    document.querySelector("#jobDescCont").innerHTML = `<p class='jobDetailsHeader'>Job Descriprion:</p> <p>${parseBreaks(job.description)}</p> <p class='jobDetailsHeader'>Requirements:</p> <div class='jobDetailsList'>${parseList(job.skills)}</div> <p class='jobDetailsHeader'> Responsibilities:<p> <div class='jobDetailsList'>${parseList(job.responsibilities)}</div>`;
+    
 }
 
 function findApplicationDuplicates(applications, username, jobID) {
-    for (let i = 0; i < applications.length; i++) {
-        if (applications[i].username === username && Number(applications[i].jobID) === Number(jobID)) {
+    for(let i=0; i<applications.length; i++) {
+        if (applications[i].username === username && applications[i].jobID === parseInt(jobID)) {
             return true;
         }
     }
@@ -96,19 +70,29 @@ function findApplicationDuplicates(applications, username, jobID) {
 }
 
 function getFormData() {
-    const citySelectedIdx = document.querySelector("#cityOptions").selectedIndex;
-    const eduLevelSelectedIdx = document.querySelector("#degreeOptions").selectedIndex;
+    let fname = document.querySelector("#fname").value;
+    let lname = document.querySelector("#lname").value;
+    let citySelectedIdx = document.querySelector("#cityOptions").selectedIndex;
+    let eduLevelSelectedIdx = document.querySelector("#degreeOptions").selectedIndex;
+    let city = document.querySelector("#cityOptions").options[citySelectedIdx].text;
+    let eduLevel = document.querySelector("#degreeOptions").options[eduLevelSelectedIdx].text;
+    let schoolName = document.querySelector("#uni").value;
+    let yearsOfExperience = document.querySelector("#YOE").value;
+    let employer = document.querySelector("#prevEmployerName").value;
+    let jobDesc = document.querySelector("#prevJobDesc").value;
 
-    return {
-        fname: document.querySelector("#fname").value,
-        lname: document.querySelector("#lname").value,
-        city: document.querySelector("#cityOptions").options[citySelectedIdx].text,
-        eduLevel: document.querySelector("#degreeOptions").options[eduLevelSelectedIdx].text,
-        schoolName: document.querySelector("#uni").value,
-        yearsOfExperience: document.querySelector("#YOE").value,
-        employer: document.querySelector("#prevEmployerName").value,
-        jobDesc: document.querySelector("#prevJobDesc").value
-    };
+    let formData = {
+        "fname": fname,
+        "lname": lname,
+        "city": city,
+        "eduLevel": eduLevel,
+        "schoolName": schoolName,
+        "yearsOfExperience": yearsOfExperience,
+        "employer": employer,
+        "jobDesc": jobDesc
+    }
+
+    return formData;
 }
 
 function applyToJob() {
@@ -127,10 +111,14 @@ function applyToJob() {
 }
 
 function apply() {
-    const job = fetchJobDetails(currentJobID);
-    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    let jobID = parseInt(urlParams.get("jobId"));
+    let formData = getFormData();
+    let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    let apps = loadTable("applications");
+    let jobs = loadTable("jobs");
+    let job = jobs[jobID];
 
-    if (!job) {
+    if (!job || job.deleted) {
         throw "This job is no longer available.";
     }
 
@@ -138,28 +126,27 @@ function apply() {
         throw "Please sign in before applying.";
     }
 
-    const formData = getFormData();
-    const apps = loadTable("applications");
-
-    if (findApplicationDuplicates(apps, currentUser.username, currentJobID)) {
-        throw "You have already applied to this job.";
+    if (findApplicationDuplicates(apps, currentUser.username, jobID)) {
+        throw "you have already applied to this job";
+    }
+    //jobID as an integer, not a string
+    let appEntry = {"jobID": parseInt(jobID),
+        "username": currentUser.username,
+        "date": Date.now(),
+        "formData": formData,
     }
 
-    const appEntry = {
-        jobID: Number(currentJobID),
-        username: currentUser.username,
-        date: Date.now(),
-        formData: formData
-    };
-
     apps.push(appEntry);
+
     saveTable("applications", apps);
+
 }
 
 function main() {
+    
     populateJobDetails(fetchJobDetails(currentJobID));
 }
 
-window.apply = apply;
-window.applyToJob = applyToJob;
-document.addEventListener("DOMContentLoaded", main);
+
+
+window.onload = main;
