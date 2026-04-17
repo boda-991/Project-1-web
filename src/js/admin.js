@@ -49,12 +49,12 @@ function renderDashboardTable(activeJobs) {
     tableBody.innerHTML = "";
 
     if (activeJobs.length === 0) {
-        emptyState.hidden = false;
+        emptyState.style.display = "grid";
         tableWrap.hidden = true;
         return;
     }
 
-    emptyState.hidden = true;
+    emptyState.style.display = "none";
     tableWrap.hidden = false;
 
     activeJobs.forEach(function(entry) {

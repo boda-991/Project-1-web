@@ -21,7 +21,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const selector = document.getElementById("jobOptions");
     const deleteButton = document.getElementById("deleteJobBtn");
     const emptyState = document.getElementById("edit-empty-state");
-
     if (!form || !selector || !deleteButton || !emptyState) {
         return;
     }
@@ -43,15 +42,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
         if (jobs.length === 0) {
             selector.disabled = true;
-            emptyState.hidden = false;
+            emptyState.style.display = "grid";
             setFormDisabled(true);
-            form.hidden = true;
+            form.style.display = "none";
             return;
         }
 
         selector.disabled = false;
-        emptyState.hidden = true;
-        form.hidden = false;
+        form.style.display = "grid";
+        emptyState.style.display = "none";
         setFormDisabled(false);
 
         jobs.forEach(function(entry) {

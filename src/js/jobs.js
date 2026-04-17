@@ -74,5 +74,5 @@ document.addEventListener("DOMContentLoaded", function() {
 
     expInput.addEventListener("input", function() {
         filterMyJobs(searchInput.value, expInput.value);
-    });
+        });
 });
