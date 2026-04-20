@@ -72,20 +72,6 @@ function renderJobs(Array){
     return;
 }
 
-    displayAllJobs();
-
-    searchForm.addEventListener("submit", function(event) {
-        event.preventDefault();
-        filterMyJobs(searchInput.value, expInput.value);
-    });
-
-    searchInput.addEventListener("input", function() {
-        filterMyJobs(searchInput.value, expInput.value);
-    });
-
-    expInput.addEventListener("input", function() {
-        filterMyJobs(searchInput.value, expInput.value);
-});
     for(let i = 0 ; i<Array.length ; i++) {
 
         let job = Array[i] ;
