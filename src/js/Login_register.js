@@ -87,8 +87,12 @@ document.getElementById("loginForm").addEventListener("submit", function(e) {
 
     if (user) {
         alert("Login success: " + user.name);
-        localStorage.setItem("currentUser", JSON.stringify(user));8
-        window.location.href = "admin-dashboard.html";
+        localStorage.setItem("currentUser", JSON.stringify(user));
+        if (user.is_admin) {
+            window.location.href = "admin-dashboard.html";
+        } else {
+            window.location.href="jobs.html";
+        }
 
     } else {
         alert("Invalid username or password");
