@@ -85,7 +85,6 @@ function renderJobs(Array){
 
     expInput.addEventListener("input", function() {
         filterMyJobs(searchInput.value, expInput.value);
-        });
 });
     for(let i = 0 ; i<Array.length ; i++) {
 
