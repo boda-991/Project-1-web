@@ -11,9 +11,10 @@ This README explains how to get started with the server/backend, install depende
     `Project-1-web/server`
 
 2. Create and activate a virtual environment:
-    ```cli
-    python3 -m venv .venv
-    source .venv/bin/activate```
+    ```
+    python3 -m venv venv
+    source venv/bin/activate
+    ```
 
 3. Upgrade pip and install requirements:
     `pip install -r requirements.txt`
@@ -24,9 +25,9 @@ This README explains how to get started with the server/backend, install depende
     
 ## Setup (Windows PowerShell)
 1. Create venv:
-    `python -m venv .venv`
+    `python -m venv venv`
 2. Activate:
-    `.\.venv\Scripts\Activate.ps1`
+    `.\venv\Scripts\Activate.ps1`
 3. Install:
     `pip install -r requirements.txt`
 4. Run using the appropriate command as above.
