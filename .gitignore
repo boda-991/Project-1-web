@@ -6,3 +6,4 @@ venv/
 .DS_Store
 .vscode/
 migrations
+db.sqlite3
