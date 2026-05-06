@@ -51,7 +51,8 @@
             date: form.querySelector("#dateP").value,
             description: form.querySelector("#jobDescP").value.trim(),
             responsibilities: form.querySelector("#responsibilitiesP").value,
-            skills: form.querySelector("#skills").value
+            skills: form.querySelector("#skills").value,
+            experience: form.querySelector("#experience").value
         };
     }
 
@@ -77,7 +78,7 @@
 
     function normalizeJobRecord(formData, existingJob) {
         const previousJob = existingJob && typeof existingJob === "object" ? existingJob : {};
-        const safeExperience = Number(previousJob.experience);
+        const safeExperience = Number(previousJob.experience) || Number(formData.experience);
         const responsibilitiesSource = Object.prototype.hasOwnProperty.call(formData, "responsibilities")
             ? formData.responsibilities
             : previousJob.responsibilities;
