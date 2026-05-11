@@ -56,7 +56,7 @@ document.getElementById("registerForm").addEventListener("submit", function(e) {
         return;
     }
 
-    let users = JSON.parse(localStorage.getItem("users")) || [];
+    /*let users = JSON.parse(localStorage.getItem("users")) || [];
 
     const exists = users.find(u => u.username === username);
 
@@ -68,10 +68,18 @@ document.getElementById("registerForm").addEventListener("submit", function(e) {
     users.push({ name, username, password: pass, company, is_admin });
 
     localStorage.setItem("users", JSON.stringify(users));
-
-    alert("Registered successfully");
-    setTimeout(() => { document.getElementById("registerForm").reset(); }, 1000);
-    window.location.href = "Login_register.html";
+    */
+    register(username, username, pass, confirm, is_admin, company)
+    .then(result => {
+        alert("Registered successfully");
+        setTimeout(() => { document.getElementById("registerForm").reset(); }, 1000);
+        window.location.href = "Login_register.html";
+    })
+    .catch(error => {
+        alert("Registration failed: " + error.message);
+        return;
+    });
+    
 });
 
 // Login logic: Validates credentials against stored user data in localStorage
@@ -81,20 +89,22 @@ document.getElementById("loginForm").addEventListener("submit", function(e) {
     const username = document.getElementById("logEmail").value;
     const pass = document.getElementById("logPass").value;
 
-    let users = JSON.parse(localStorage.getItem("users")) || [];
+    /*let users = JSON.parse(localStorage.getItem("users")) || [];
 
     const user = users.find(u => u.username === username && u.password === pass);
-
-    if (user) {
-        alert("Login success: " + user.name);
+    */
+    login(username, pass)
+    .then(user => {
+        alert("Login successful: " + user.username);
         localStorage.setItem("currentUser", JSON.stringify(user));
         if (user.is_admin) {
             window.location.href = "admin-dashboard.html";
         } else {
             window.location.href="jobs.html";
         }
-
-    } else {
-        alert("Invalid username or password");
-    }
-});
+    })
+    .catch(error => {
+         alert("Login failed: " + error.message);
+         return;
+    });
+})

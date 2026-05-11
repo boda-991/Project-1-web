@@ -21,7 +21,7 @@ from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
-from users.views import RegisterView
+from users.views import RegisterView, UserInfoView
 
 
 urlpatterns = [
@@ -29,6 +29,7 @@ urlpatterns = [
     path('api/register/', RegisterView.as_view(), name='auth_register'),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/users/<int:pk>/', UserInfoView.as_view(), name='user_info'),
 
     
     path('api/applications/', include('applications.urls')),

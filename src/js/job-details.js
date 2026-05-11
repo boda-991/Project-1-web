@@ -4,17 +4,23 @@ const urlParams = new URLSearchParams(queryString);
 let currentJobID = urlParams.get("jobId");
 
 
-function fetchJobDetails(jobID) {
-    const jobs = loadTable("jobs");
-    const job = jobs[jobID];
+async function fetchJobDetails(jobID) {
+    try {
+        const response = await fetch(`http://${BASE_URL}/api/jobs/${jobID}/`, {
+            method: "GET"
+        });
 
-    if (!job || job.deleted) {
+        if (!response.ok) {
+            throw new Error("Failed to fetch job details");
+        }
+
+        const jobData = await response.json();
+        return jobData;
+    } catch (error) {
+        console.error("Error fetching job details:", error);
         return null;
-    }
-
-    return job;
+     }
 }
-
 function parseList(listArr) {
     if (!listArr || listArr.length === 0) {
         return "<p>None specified.</p>";
@@ -60,14 +66,7 @@ function populateJobDetails(job) {
     
 }
 
-function findApplicationDuplicates(applications, username, jobID) {
-    for(let i=0; i<applications.length; i++) {
-        if (applications[i].username === username && applications[i].jobID === parseInt(jobID)) {
-            return true;
-        }
-    }
-    return false;
-}
+
 
 function getFormData() {
     let fname = document.querySelector("#fname").value;
@@ -95,9 +94,9 @@ function getFormData() {
     return formData;
 }
 
-function applyToJob() {
+async function applyToJob() {
     try {
-        apply();
+        await apply();
         //alert("Applied successfully");
         closeAllDialogues();
         openDialogue("successDBox");
@@ -110,41 +109,39 @@ function applyToJob() {
     }
 }
 
-function apply() {
+async function apply() {
     let jobID = parseInt(urlParams.get("jobId"));
     let formData = getFormData();
     let currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    let apps = loadTable("applications");
-    let jobs = loadTable("jobs");
-    let job = jobs[jobID];
-
-    if (!job || job.deleted) {
-        throw "This job is no longer available.";
+    
+    const response = await fetch(`http://${BASE_URL}/api/applications/`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${currentUser.accessToken}`
+        },
+        body: JSON.stringify({
+            job: jobID,
+            user_id: currentUser.id,
+            form_data: formData
+        })
+    });
+    
+    if (!response.ok) {
+        const errorData = await response.json();
+        throw errorData.detail || "Failed to apply for the job.";
     }
-
     if (!currentUser || !currentUser.username) {
         throw "Please sign in before applying.";
     }
 
-    if (findApplicationDuplicates(apps, currentUser.username, jobID)) {
-        throw "you have already applied to this job";
-    }
-    //jobID as an integer, not a string
-    let appEntry = {"jobID": parseInt(jobID),
-        "username": currentUser.username,
-        "date": Date.now(),
-        "formData": formData,
-    }
-
-    apps.push(appEntry);
-
-    saveTable("applications", apps);
-
 }
 
-function main() {
-    
-    populateJobDetails(fetchJobDetails(currentJobID));
+async function main() {
+    document.querySelector("#applyBtn").addEventListener("click", async () => {
+        await applyToJob();
+    });
+    populateJobDetails(await fetchJobDetails(currentJobID));
 }
 
 

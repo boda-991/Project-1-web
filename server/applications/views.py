@@ -1,4 +1,6 @@
 from rest_framework import generics, permissions
+from rest_framework.response import Response
+from rest_framework.exceptions import ValidationError
 from .models import Application
 from .serializers import ApplicationSerializer
 from users.permissions import IsOwner
@@ -19,7 +21,9 @@ class ApplicationListCreate(generics.ListCreateAPIView):
         return Application.objects.filter(user=user)
 
     def perform_create(self, serializer):
-        
+        if Application.objects.filter(user=self.request.user, job_id=self.request.data.get('job')).exists():
+            raise ValidationError({"detail": "You have already applied for this job."})
+    
         serializer.save(user=self.request.user)
 
 class ApplicationDetail(generics.RetrieveUpdateDestroyAPIView):
