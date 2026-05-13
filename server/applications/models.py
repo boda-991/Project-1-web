@@ -7,3 +7,4 @@ class Application(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     date = models.DateTimeField(auto_now_add=True)
     form_data = models.JSONField()
+    status = models.CharField(max_length=20, default='Pending')
