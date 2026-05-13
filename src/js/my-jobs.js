@@ -6,7 +6,7 @@ async function displayAppliedJobs() {
         const response = await fetch('http://127.0.0.1:8000/api/applications/', {
             method: 'GET',
             headers: {
-                'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
+                'Authorization': `Bearer ${currentUser.accessToken}`,
                 'Content-Type': 'application/json'
             }
         });
@@ -50,7 +50,7 @@ async function withdrawApp(appId) {
             const response = await fetch(`http://127.0.0.1:8000/api/applications/${appId}/`, {
                 method: 'DELETE',
                 headers: {
-                    'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+                    'Authorization': `Bearer ${currentUser.accessToken}`
                 }
             });
 
