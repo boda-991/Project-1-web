@@ -37,6 +37,7 @@ document.getElementById("registerForm").addEventListener("submit", function(e) {
     const confirm = document.getElementById("regConfirm").value;
     const company = document.getElementById("companyInput").value;
     const accountType = document.getElementById("accountType").value;
+    const email = document.getElementById("regEmaill").value;
     let is_admin = false;
 
     if (accountType === "admin" && company.trim() === "") {
@@ -69,7 +70,7 @@ document.getElementById("registerForm").addEventListener("submit", function(e) {
 
     localStorage.setItem("users", JSON.stringify(users));
     */
-    register(username, username, pass, confirm, is_admin, company)
+    register(username, email, pass, confirm, is_admin, company)
     .then(result => {
         alert("Registered successfully");
         setTimeout(() => { document.getElementById("registerForm").reset(); }, 1000);
