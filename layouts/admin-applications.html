@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Applications</title>
+    <link rel="stylesheet" href="../src/css/style.css">
+    <link rel="stylesheet" href="../src/css/admin.css">
+</head>
+<body class="admin-page">
+    <div class="titleBar">
+        <a href="landing.html">
+            <img src="../src/img/talentsy.png" width="220" alt="Talentsy">
+        </a>
+        <div class="tbLeftCont">
+            <a class="titleBarLink" href="add-edit-job.html">Admin Home</a>
+            <a class="titleBarLink" href="admin-dashboard.html">Dashboard</a>
+            <a class="titleBarLink" href="add-job.html">Add Job</a>
+            <a class="titleBarLinkEnd" href="edit-job.html">Edit Jobs</a>
+        </div>
+        <div class="tbRightCont">
+            <a class="btnSecondary uLink" href="jobs.html">View Public Jobs</a>
+        </div>
+    </div>
+
+    <main class="container admin-shell">
+        <section class="admin-section">
+            <div class="admin-section__header">
+                <div>
+                    <p class="admin-kicker">Applications</p>
+                    <h1>Review candidate applications</h1>
+                    <p class="admin-lead">Applications shown here belong only to jobs posted by the signed-in admin.</p>
+                </div>
+                <a class="btnSecondary uLink" href="admin-dashboard.html">Back to Dashboard</a>
+            </div>
+
+            <div id="applicationsEmptyState" class="empty-state" hidden>
+                <img src="../src/img/talentsy_transparent.png" alt="Talentsy logo" width="140">
+                <h3>No applications yet</h3>
+                <p>When candidates apply to your job posts, their applications will appear here.</p>
+            </div>
+
+            <div class="admin-table-wrap">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Job Title</th>
+                            <th>Applicant</th>
+                            <th>Applied On</th>
+                            <th>Status</th>
+                            <th>Application Details</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminApplicationsTable"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="../src/js/admin-auth.js"></script>
+    <script src="../src/js/admin-applications.js"></script>
+</body>
+</html>

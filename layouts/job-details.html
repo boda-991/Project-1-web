@@ -23,6 +23,8 @@
                     <br>
                     <input type="text" name="Last Name" id="lname" placeholder="Last Name">
                     <br>
+                    <input type="text" name="Contact Info" id="contactInfo" placeholder="Email or Phone Number">
+                    <br>
                     <label for="cityOptions">Current City</label>
                     <select name="cityOptions" id="cityOptions">
                         <option value="value1">Cairo</option>
@@ -52,7 +54,7 @@
                     
                 </form>
                 <br>
-                <button type="submit" class="btn" id="applyBtn">Apply Now</button>
+                <button type="submit" class="btn" id="submitApplyBtn">Apply Now</button>
                 <button class="btnSecondary" onclick="closeDialogue(this.parentElement.id)">Cancel</button>
             </div>
 
@@ -144,7 +146,7 @@
             <li>Concepts: Knowledge of web accessibility standards (WCAG) and API integration.</li>
         </ul>
         </div>
-        <button class="btn" id="applyBtn" onclick="openDialogue('apply-dBox')">Apply</button>
+        <button class="btn" id="openApplyBtn">Apply</button>
     
     <script src="../src/js/env.js"></script>
     <script src="../src/js/utils.js"></script>

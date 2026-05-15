@@ -385,6 +385,32 @@
     background-color: #c73f3f;
 }
 
+.admin-page .visibility-btn {
+    width: 44px;
+    min-width: 44px;
+    height: 42px;
+    padding: 0;
+    color: rgb(18, 33, 116);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-page .visibility-btn svg {
+    width: 22px;
+    height: 22px;
+    display: block;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.admin-page .visibility-btn:hover {
+    color: rgb(10, 135, 178);
+}
+
 .admin-page a.btn,
 .admin-page a.btn:visited {
     color: #ffffff;

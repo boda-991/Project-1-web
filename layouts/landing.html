@@ -36,7 +36,7 @@
             <br>
             <div class="heroLeftBtnCont">
                 <button class="landingBtn"onclick="window.location.href='jobs.html'">Browse Now</button>
-                <button class="landingBtnSecondary" onclick="window.location.href='add-job.html'">Find Talent</button>
+                <button class="landingBtnSecondary" onclick="handleFindTalentClick()">Find Talent</button>
             </div>
             
         </div>
@@ -63,6 +63,24 @@
             
         </div>
     </div>
+    <script>
+        function handleFindTalentClick() {
+            let currentUser = null;
+
+            try {
+                currentUser = JSON.parse(localStorage.getItem("currentUser"));
+            } catch (error) {
+                currentUser = null;
+            }
+
+            if (!currentUser || !currentUser.accessToken || !currentUser.is_admin) {
+                alert("Please log in as an admin user to post jobs.");
+                return;
+            }
+
+            window.location.href = "add-job.html";
+        }
+    </script>
     <script src="../src/js/roles.js"></script>
 </body>
 </html>

@@ -27,18 +27,13 @@ class JobDetailView(RetrieveUpdateDestroyAPIView):
             return [permissions.IsAuthenticated(), IsOwner()]
         return [permissions.AllowAny()]
 
-    def perform_destroy(self, instance):
-        instance.deleted = True
-        instance.status = 'Closed'
-        instance.save(update_fields=['deleted', 'status'])
-
 class AdminJobListCreateView(ListCreateAPIView):
 
     serializer_class = JobSerializer
     permission_classes = [permissions.IsAuthenticated, IsAdmin, IsOwner]
 
     def get_queryset(self):
-        return Job.objects.filter(user=self.request.user, deleted=False).order_by('-date')
+        return Job.objects.filter(user=self.request.user).order_by('-date')
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)

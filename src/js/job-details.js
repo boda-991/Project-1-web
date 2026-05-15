@@ -39,7 +39,7 @@ function parseBreaks(text) {
 
 function populateJobDetails(job) {
     let jobDescCont = document.querySelector("#jobDescCont");
-    let applyButton = document.querySelector("#applyBtn");
+    let applyButton = document.querySelector("#openApplyBtn");
     if (!job) {
         document.querySelector("#jobTitle").innerText = "Job Not Available";
         document.querySelector("#companyName").innerText = "This listing is no longer active.";
@@ -58,7 +58,7 @@ function populateJobDetails(job) {
 
     document.querySelector("#jobTitle").innerText = job.title;
     document.querySelector("#companyName").innerText = job.company;
-    document.querySelector("#workingHours").innerText = job.workingHourse;
+    document.querySelector("#workingHours").innerText = job.working_hours || job.workingHourse || "--";
     const formattedDate = new Date(job.date).toLocaleDateString();
 
     document.querySelector("#jobDate").innerText = formattedDate;
@@ -71,6 +71,7 @@ function populateJobDetails(job) {
 function getFormData() {
     let fname = document.querySelector("#fname").value;
     let lname = document.querySelector("#lname").value;
+    let contactInfo = document.querySelector("#contactInfo").value;
     let citySelectedIdx = document.querySelector("#cityOptions").selectedIndex;
     let eduLevelSelectedIdx = document.querySelector("#degreeOptions").selectedIndex;
     let city = document.querySelector("#cityOptions").options[citySelectedIdx].text;
@@ -83,6 +84,7 @@ function getFormData() {
     let formData = {
         "fname": fname,
         "lname": lname,
+        "contactInfo": contactInfo,
         "city": city,
         "eduLevel": eduLevel,
         "schoolName": schoolName,
@@ -112,7 +114,11 @@ async function applyToJob() {
 async function apply() {
     let jobID = parseInt(urlParams.get("jobId"));
     let formData = getFormData();
-    let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    let currentUser = getCurrentUser();
+
+    if (!currentUser || !currentUser.accessToken) {
+        throw "Please sign in before applying.";
+    }
     
     const response = await fetch(`http://${BASE_URL}/api/applications/`, {
         method: "POST",
@@ -122,7 +128,6 @@ async function apply() {
         },
         body: JSON.stringify({
             job: jobID,
-            user_id: currentUser.id,
             form_data: formData
         })
     });
@@ -131,14 +136,37 @@ async function apply() {
         const errorData = await response.json();
         throw errorData.detail || "Failed to apply for the job.";
     }
-    if (!currentUser || !currentUser.username) {
-        throw "Please sign in before applying.";
-    }
 
 }
 
+function getCurrentUser() {
+    try {
+        return JSON.parse(localStorage.getItem("currentUser"));
+    } catch (error) {
+        return null;
+    }
+}
+
+function showApplyError(message) {
+    closeAllDialogues();
+    openDialogue("errorDBox");
+    document.querySelector("#errorMsg").innerText = message;
+}
+
+function openApplyForm() {
+    const currentUser = getCurrentUser();
+
+    if (!currentUser || !currentUser.accessToken) {
+        showApplyError("Please sign in before applying.");
+        return;
+    }
+
+    openDialogue("apply-dBox");
+}
+
 async function main() {
-    document.querySelector("#applyBtn").addEventListener("click", async () => {
+    document.querySelector("#openApplyBtn").addEventListener("click", openApplyForm);
+    document.querySelector("#submitApplyBtn").addEventListener("click", async () => {
         await applyToJob();
     });
     populateJobDetails(await fetchJobDetails(currentJobID));

@@ -74,18 +74,23 @@ async function updateJob(jobId, jobData, accessToken) {
     return await response.json();
 }
 
-async function deleteJob(jobId, accessToken) {
+async function hideJob(jobId, accessToken) {
     const BASE_URL = window.BASE_URL || "127.0.0.1:8000";
     const response = await fetch(`http://${BASE_URL}/api/jobs/${jobId}/`, {
-        method: 'DELETE',
+        method: 'PATCH',
         headers: {
+            'Content-Type': 'application/json',
             'Authorization': `Bearer ${accessToken}`
-        }
+        },
+        body: JSON.stringify({
+            deleted: true,
+            status: "Closed"
+        })
     });
 
     if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.detail || 'Failed to delete job');
+        throw new Error(errorData.detail || 'Failed to hide job');
     }
 }
 
@@ -211,7 +216,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         }
 
         try {
-            await deleteJob(selectedJobId, currentUser.accessToken);
+            await hideJob(selectedJobId, currentUser.accessToken);
             setEditJobFeedback("Job removed from active listings.", "success");
             await populateSelector();
         } catch (error) {

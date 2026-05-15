@@ -43,6 +43,11 @@ async function createJob(jobData, accessToken) {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
+    const currentUser = getCurrentAdminUser();
+    if (!currentUser) {
+        return;
+    }
+
     const form = document.getElementById("job-form");
 
     if (!form) {
@@ -53,11 +58,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     form.addEventListener("submit", async function(event) {
         event.preventDefault();
-
-        const currentUser = getCurrentAdminUser();
-        if (!currentUser) {
-            return;
-        }
 
         const formData = getJobFormData(form);
         const validation = validateJobFormData(formData);

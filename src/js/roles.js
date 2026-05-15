@@ -14,7 +14,7 @@ if (!currentUser) {
     document.getElementById("btn-logout").style.display = "inline";
 }
 
-let userRole = JSON.parse(localStorage.getItem("currentUser")).is_admin ? "admin" : "user";
+let userRole = currentUser && currentUser.is_admin ? "admin" : "user";
 
 if (userRole === "admin") {
     document.getElementById("admin-dashboard-link").style.display = "inline";
