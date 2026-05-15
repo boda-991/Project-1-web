@@ -18,7 +18,7 @@
 
     <a class="titleBarLink" href="{% url 'my-jobs' %}" id="my-jobs-link">My Jobs</a>
 <!-- for test  -->
-    <a class="titleBarLink" href="{% url 'landing' %}" id="admin-dashboard-link">My Job Posts</a>
+    <a class="titleBarLink" href="{% url 'admin-dashboard' %}" id="admin-dashboard-link">My Job Posts</a>
 
     <a class="titleBarLinkEnd" href="{% url 'add-job' %}" id="post-job-link">Post a Job</a>
 </div>
@@ -39,8 +39,8 @@
             <p class="heroLeftPara">Explore top oppurtonities in all industries!</p>
             <br>
             <div class="heroLeftBtnCont">
-                <button class="landingBtn"onclick="window.location.href='jobs.html'">Browse Now</button>
-                <button class="landingBtnSecondary" onclick="window.location.href='add-job.html'">Find Talent</button>
+                <button class="landingBtn"onclick="window.location.href='/api/jobs/jobs/'">Browse Now</button>
+                <button class="landingBtnSecondary" onclick="window.location.href='/api/jobs/add-job/'">Find Talent</button>
             </div>
             
         </div>

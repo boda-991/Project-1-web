@@ -1,24 +1,25 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Job Tools</title>
-    <link rel="stylesheet" href="../src/css/style.css">
-    <link rel="stylesheet" href="../src/css/admin.css">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <link rel="stylesheet" href="{% static 'css/admin.css'%}">
 </head>
 <body class="admin-page">
     <div class="titleBar">
-        <a href="landing.html">
-            <img src="../src/img/talentsy.png" width="220" alt="Talentsy">
+        <a href="{% url 'landing' %}">
+            <img src="{% static 'img/talentsy.png'%}" width="220" alt="Talentsy">
         </a>
         <div class="tbLeftCont">
-            <a class="titleBarLink" href="admin-dashboard.html">Dashboard</a>
-            <a class="titleBarLink" href="add-job.html">Add Job</a>
-            <a class="titleBarLinkEnd" href="edit-job.html">Edit Job</a>
+            <a class="titleBarLink" href="{% url 'admin-dashboard' %}">Dashboard</a>
+            <a class="titleBarLink" href="{% url 'add-job' %}">Add Job</a>
+            <a class="titleBarLinkEnd" href="{% url 'edit-job' %}">Edit Job</a>
         </div>
         <div class="tbRightCont">
-            <a class="btnSecondary uLink" href="jobs.html">View Public Jobs</a>
+            <a class="btnSecondary uLink" href="{% url 'jobs' %}">View Public Jobs</a>
         </div>
     </div>
 
@@ -31,45 +32,45 @@
                 <h1>Keep your hiring pages polished and your roles up to date.</h1>
                 <p class="admin-lead">This hub gives you the same branded Talentsy layout as the public site while keeping job management quick, clear, and consistent.</p>
                 <div class="admin-actions">
-                    <a class="btn" href="admin-dashboard.html">Open Dashboard</a>
-                    <a class="btnSecondary uLink" href="add-job.html">Create a Job</a>
+                    <a class="btn" href="{% url 'admin-dashboard' %}">Open Dashboard</a>
+                    <a class="btnSecondary uLink" href="{% url 'add-job' %}">Create a Job</a>
                 </div>
             </div>
             <div class="admin-hero__media">
-                <img src="../src/img/graphic2.png" alt="Talentsy admin hero graphic">
+                <img src="{% static 'img/graphic2.png'%}" alt="Talentsy admin hero graphic">
             </div>
         </section>
 
         <section class="admin-grid">
             <article class="admin-card card3">
                 <div class="admin-card__icon">
-                    <img src="../src/img/company_ico.png" alt="" width="48">
+                    <img src="{% static 'img/company_ico.png' %}" alt="" width="48">
                 </div>
                 <h2>Admin Dashboard</h2>
                 <p>Review your active roles, monitor openings, and jump straight into edit or delete actions.</p>
-                <a class="btn uLink" href="admin-dashboard.html">Go to Dashboard</a>
+                <a class="btn uLink" href="{% url 'admin-dashboard' %}">Go to Dashboard</a>
             </article>
 
             <article class="admin-card card3">
                 <div class="admin-card__icon">
-                    <img src="../src/img/job_ico.png" alt="" width="48">
+                    <img src="{% static 'img/job_ico.png' %}" alt="" width="48">
                 </div>
                 <h2>Add Job</h2>
                 <p>Create a new listing with the essential information needed for the public jobs experience.</p>
-                <a class="btn uLink" href="add-job.html">Add a New Job</a>
+                <a class="btn uLink" href="{% url 'add-job' %}">Add a New Job</a>
             </article>
 
             <article class="admin-card card3">
                 <div class="admin-card__icon">
-                    <img src="../src/img/worker_ico.png" alt="" width="48">
+                    <img src="{% static 'img/worker_ico.png' %}" alt="" width="48">
                 </div>
                 <h2>Edit or Delete</h2>
                 <p>Update a listing, refresh the content, or remove it from active listings without breaking saved references.</p>
-                <a class="btn uLink" href="edit-job.html">Manage Existing Jobs</a>
+                <a class="btn uLink" href="{% url 'edit-job' %}">Manage Existing Jobs</a>
             </article>
         </section>
     </main>
-    <script src="../src/js/admin-auth.js"></script>
+    <script src="{% static 'js/admin-auth.js' %}"></script>
     <script>
         getCurrentAdminUser();
     </script>

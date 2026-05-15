@@ -99,7 +99,7 @@ document.getElementById("loginForm").addEventListener("submit", function(e) {
         alert("Login successful: " + user.username);
         localStorage.setItem("currentUser", JSON.stringify(user));
         if (user.is_admin) {
-            window.location.href = "/admin-dashboard/";
+            window.location.href = "/api/jobs/adminDashboard/";
         } else {
             window.location.href="/jobs/";
         }

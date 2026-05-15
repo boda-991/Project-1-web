@@ -32,5 +32,5 @@ if (userRole === "admin") {
 
 function logout() {
     localStorage.setItem("currentUser", null);
-    window.location.href = "../layouts/Login_register.html";
+    window.location.href = "/login-register/";
 }

@@ -24,8 +24,8 @@ function normalizeListValue(value) {
 }
 
 async function createJob(jobData, accessToken) {
-    const BASE_URL = window.BASE_URL || "127.0.0.1:8000";
-    const response = await fetch(`http://${BASE_URL}/api/jobs/admin/`, {
+    const BASE_URL = window.BASE_URL || "http://127.0.0.1:8000";
+    const response = await fetch(`${BASE_URL}/api/jobs/adminAction/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -54,7 +54,8 @@ document.addEventListener("DOMContentLoaded", function() {
     form.addEventListener("submit", async function(event) {
         event.preventDefault();
 
-        const currentUser = getCurrentAdminUser();
+        const currentUser = window.getCurrentAdminUser();
+        console.log(JSON.parse(localStorage.getItem("currentUser")));
         if (!currentUser) {
             return;
         }
@@ -81,12 +82,17 @@ document.addEventListener("DOMContentLoaded", function() {
         };
 
         try {
+            console.log("TOKEN:", currentUser.accessToken);
+            console.log(typeof currentUser.accessToken);
+            const token = JSON.parse(localStorage.getItem("currentUser")).accessToken;
+            console.log(JSON.parse(atob(token.split('.')[1])));
+
             await createJob(jobData, currentUser.accessToken);
             setAddJobFeedback("Job created successfully. Redirecting to the dashboard...", "success");
             resetJobForm(form);
 
             window.setTimeout(function() {
-                window.location.href = "admin-dashboard.html";
+                window.location.href = "/api/jobs/adminDashboard/";
             }, 900);
         } catch (error) {
             console.error('Error creating job:', error);

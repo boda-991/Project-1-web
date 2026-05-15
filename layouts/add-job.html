@@ -1,24 +1,25 @@
+{% load static%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Job</title>
-    <link rel="stylesheet" href="../src/css/style.css">
-    <link rel="stylesheet" href="../src/css/admin.css">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}"">
+    <link rel="stylesheet" href="{% static 'css/admin.css'%}">
 </head>
 <body class="admin-page">
     <div class="titleBar">
-        <a href="landing.html">
-            <img src="../src/img/talentsy.png" width="220" alt="Talentsy">
+        <a href="{% url 'landing' %}">
+            <img src="{% static 'img/talentsy.png'%}" width="220" alt="Talentsy">
         </a>
         <div class="tbLeftCont">
-            <a class="titleBarLink" href="add-edit-job.html">Admin Home</a>
-            <a class="titleBarLink" href="admin-dashboard.html">Dashboard</a>
-            <a class="titleBarLinkEnd" href="edit-job.html">Edit Jobs</a>
+            <a class="titleBarLink" href="{% url 'admin-dashboard' %}">Dashboard</a>
+            <a class="titleBarLink" href="{% url 'add-job' %}">Add Job</a>
+            <a class="titleBarLinkEnd" href="{% url 'edit-job' %}">Edit Job</a>
         </div>
         <div class="tbRightCont">
-            <a class="btnSecondary uLink" href="jobs.html">View Public Jobs</a>
+            <a class="btnSecondary uLink" href="{% url 'jobs' %}">View Public Jobs</a>
         </div>
     </div>
 
@@ -30,7 +31,7 @@
                     <h1>Add a new job</h1>
                     <p class="admin-lead">Fill in the essential role details. Any compatibility fields used by the public jobs pages will be safely defaulted behind the scenes.</p>
                 </div>
-                <img src="../src/img/job_ico.png" alt="" width="72">
+                <img src="{% static 'img/job_ico.png' %}" alt="" width="72">
             </div>
 
             <div id="form-feedback" class="notice" hidden></div>
@@ -75,14 +76,14 @@
 
                 <div class="form-actions">
                     <button class="btn" type="submit">Save Job</button>
-                    <a class="btnSecondary uLink" href="admin-dashboard.html">Back to Dashboard</a>
+                    <a class="btnSecondary uLink" href="{% url 'admin-dashboard' %}">Back to Dashboard</a>
                 </div>
             </form>
         </section>
     </main>
-    <script src="../src/js/admin-auth.js"></script>
-    <script src="../src/js/utils.js"></script>
-    <script src="../src/js/job-form.js"></script>
-    <script src="../src/js/add-job.js"></script>
+    <script src="{% static 'js/admin-auth.js' %}"></script>
+    <script src="{% static 'js/utils.js' %}"></script>
+    <script src="{% static 'js/job-form.js' %}"></script>
+    <script src="{% static 'js/add-job.js' %}"></script>
 </body>
 </html>

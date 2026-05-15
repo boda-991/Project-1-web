@@ -1,23 +1,25 @@
+{% load static%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <title>My Jobs</title>
-    <link rel="stylesheet" href="..//src/css/style.css">
-    <link rel="stylesheet" href="..//src/css/myJobs.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/myJobs.css' %}">
 </head>
 <body>
 <div class="titleBar">
-        <a href="landing.html">
-            <img src="../src/img/talentsy.png" width="250">
+        <a href="{% url 'landing' %}">
+            <img src="{% static 'img/talentsy.png' %}" width="250">
         </a>
         <div class="tbLeftCont">
-            <a class="titleBarLink" href="jobs.html" id="jobs-link">Find Jobs</a>
-            <a class="titleBarLink" href="My jobs.html" id="my-jobs-link">My Jobs</a>
-            <a class="titleBarLink" href="admin-dashboard.html" id="admin-dashboard-link">My Job Posts</a>
-            <a class="titleBarLinkEnd" href="add-job.html" id="post-job-link">Post a Job</a>
-        </div>
+            <a class="titleBarLink" href="{% url 'jobs' %}" id="jobs-link">Find Jobs</a>
+
+            <a class="titleBarLink" href="{% url 'my-jobs' %}" id="my-jobs-link">My Jobs</a>
+            <a class="titleBarLink" href="{% url 'admin-dashboard' %}" id="admin-dashboard-link">My Job Posts</a>
+
+            <a class="titleBarLinkEnd" href="{% url 'add-job' %}" id="post-job-link">Post a Job</a>        </div>
         <div class="tbRightCont">
-            <a href="../layouts/Login_register.html" id="login-link">
+            <a href="{% url 'login-register_page' %}" id="login-link">
                  <button class="btn">Sign-Up</button>
             </a>
             <button id="btn-logout" class="btnSecondary" onclick="logout()">Logout</button>
@@ -40,7 +42,7 @@
     <tbody id="application-table">
     </tbody>
 </table>
-<script src="../src/js/my-jobs.js"></script> 
-<script src="../src/js/roles.js"></script>
+<script src="{% static 'js/my-jobs.js' %}"></script> 
+<script src="{% static 'js/roles.js' %}"></script>
 </body>
 </html>

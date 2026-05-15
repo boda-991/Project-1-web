@@ -1,3 +1,4 @@
+{% load static%}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,8 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Details</title>
-    <link rel="stylesheet" href="../src/css/style.css">
-    <link rel="stylesheet" href="../src/css/details.css">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <link rel="stylesheet" href="{% static 'css/details.css'%}">
 
 </head>
 
@@ -77,17 +78,17 @@
         </div>
     </div>
    <div class="titleBar">
-        <a href="landing.html">
-            <img src="../src/img/talentsy.png" width="250">
+        <a href="{% url 'landing' %}">
+            <img src="{% static 'img/talentsy.png'%}" width="250">
         </a>
         <div class="tbLeftCont">
-            <a class="titleBarLink" href="jobs.html" id="jobs-link">Find Jobs</a>
-            <a class="titleBarLink" href="My jobs.html" id="my-jobs-link">My Jobs</a>
-            <a class="titleBarLink" href="admin-dashboard.html" id="admin-dashboard-link">My Job Posts</a>
-            <a class="titleBarLinkEnd" href="add-job.html" id="post-job-link">Post a Job</a>
+            <a class="titleBarLink" href="{% url 'jobs' %}" id="jobs-link">Find Jobs</a>
+            <a class="titleBarLink" href="{% url 'my-jobs' %}My jobs" id="my-jobs-link">My Jobs</a>
+            <a class="titleBarLink" href="{% url 'admin-dashboard' %}" id="admin-dashboard-link">My Job Posts</a>
+            <a class="titleBarLinkEnd" href="{% url 'add-job' %}" id="post-job-link">Post a Job</a>
         </div>
         <div class="tbRightCont">
-            <a href="../layouts/Login_register.html" id="login-link">
+            <a href="{% url 'login-register_page' %}" id="login-link">
                  <button class="btn">Sign-Up</button>
             </a>
             <button id="btn-logout" class="btnSecondary" onclick="logout()">Logout</button>
@@ -108,14 +109,14 @@
             </div>
 
             <div class="subInfoItem">
-                <img src="../src/img/time_ico_symbolic.png" alt="" width="20">
+                <img src="{% static 'img/time_ico_symbolic.png' %" alt="" width="20">
                 <p id="workingHours" class="subInfoText">
                     Full Time
                 </p>
             </div>
 
             <div class="subInfoItem">
-                <img src="../src/img/date_ico_symbolic.png" alt="" width="20">
+                <img src="{% static 'img/date_ico_symbolic.png' %}" alt="" width="20">
                 <p id="jobDate" class="subInfoText">
                     2026/8/12
                 </p>
@@ -146,10 +147,10 @@
         </div>
         <button class="btn" id="applyBtn" onclick="openDialogue('apply-dBox')">Apply</button>
     
-    <script src="../src/js/env.js"></script>
-    <script src="../src/js/utils.js"></script>
-    <script src="../src/js/job-details.js"></script>
-    <script src="../src/js/roles.js"></script>
+    <script src="{% static 'js/env.js' %}"></script>
+    <script src="{% static 'js/utils.js' %}"></script>
+    <script src="{% static 'js/job-details.js' %}"></script>
+    <script src="{% static 'js/roles.js' %}"></script>
 </body>
 
 </html>

@@ -32,19 +32,8 @@ urlpatterns = [
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/users/<int:pk>/', UserInfoView.as_view(), name='user_info'),
 
-     path('', include('users.urls')),
     path('api/applications/', include('applications.urls')),
     path('api/jobs/', include('jobs.urls')),
+    path('', include('users.urls')),
     
-    path('', TemplateView.as_view(template_name='landing.html'), name='landing'),
-    path('login-register/', TemplateView.as_view(template_name='Login_register.html'), name='login-register_page'),
-   
-    path('jobs/', TemplateView.as_view(template_name='jobs.html'), name='jobs_page'),
-    path('add-job/', TemplateView.as_view(template_name='add-job.html'), name='add_job_page'),
-    path('edit-job/', TemplateView.as_view(template_name='edit-job.html'), name='edit_job_page'),
-    path('add-edit-job/', TemplateView.as_view(template_name='add-edit-job.html'), name='add-edit_job_page'),
-
-    
-    path('my-jobs/', TemplateView.as_view(template_name='My jobs.html'), name='my_jobs_page'),
-    path('job-details/', TemplateView.as_view(template_name='job-details.html'), name='job_details_page'),
 ]

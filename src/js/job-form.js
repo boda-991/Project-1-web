@@ -1,7 +1,7 @@
 (function() {
     const DEFAULT_JOB_VALUES = {
         experience: 0,
-        workingHourse: "Full Time",
+        working_hours: "Full Time",
         status: "Open",
         deleted: false
     };
@@ -94,7 +94,7 @@
             responsibilities: normalizeListValue(responsibilitiesSource),
             skills: normalizeListValue(skillsSource),
             experience: Number.isFinite(safeExperience) ? safeExperience : DEFAULT_JOB_VALUES.experience,
-            workingHourse: previousJob.workingHourse || DEFAULT_JOB_VALUES.workingHourse,
+            working_hours: previousJob.working_hours || DEFAULT_JOB_VALUES.working_hours,
             status: previousJob.status || DEFAULT_JOB_VALUES.status,
             deleted: previousJob.deleted === true ? true : DEFAULT_JOB_VALUES.deleted
         };

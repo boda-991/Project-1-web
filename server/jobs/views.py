@@ -36,7 +36,7 @@ class JobDetailView(RetrieveUpdateDestroyAPIView):
 class AdminJobListCreateView(ListCreateAPIView):
 
     serializer_class = JobSerializer
-    permission_classes = [permissions.IsAuthenticated, IsAdmin, IsOwner]
+    permission_classes = [permissions.IsAuthenticated, IsAdmin]
 
     def get_queryset(self):
         return Job.objects.filter(user=self.request.user, deleted=False).order_by('-date')
@@ -72,3 +72,7 @@ def jobs(request):
     return render(request,'jobs.html')
 def my_jobs(request):
     return render(request,'My jobs.html')
+
+def adminDashboard(request):
+    return render(request,'admin-dashboard.html')
+

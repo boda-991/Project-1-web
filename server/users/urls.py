@@ -5,4 +5,5 @@ urlpatterns = [
 
     path('', views.landing, name='landing'),
     path('login-register/', views.login_register, name='login-register_page'),  
+    
 ]
