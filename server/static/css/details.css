@@ -1,0 +1,53 @@
+.subInfoCont {
+    display: flex;
+    flex-direction: row;
+    max-height: 25px;
+}
+
+.subInfoText {
+    font-family: sans-serif;
+    color: #8d8d8d;
+    padding: 4px;
+}
+
+.subInfoItem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* margin-inline: 8px; */
+    padding-inline: 8px;
+    border-right: 1px black solid;
+}
+
+.jobDescCont * {
+    font-family: sans-serif;
+}
+
+.applyFormHeader {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.applyFormHeader p {
+    margin-left: auto;
+    font-size: 150%;
+    font-family: sans-serif;
+}
+
+.applyFormHeader p:hover {
+    cursor: pointer;
+}
+
+.jobDetailsHeader {
+    font-size: 120%;
+    font-weight: bold;
+    margin-top: 16px;
+    font-family: 'nexa-heavy';
+}
+
+.jobDetailsList li {
+    font-family: 'nexa-light';
+    font-weight: 700;
+
+}

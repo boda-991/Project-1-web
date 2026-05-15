@@ -6,6 +6,7 @@ from applications.models import Application
 from .models import Job
 from .serializers import JobSerializer
 from users.permissions import IsAdmin, IsOwner
+from django.shortcuts import render
 
 class JobListView(ListAPIView):
     serializer_class = JobSerializer #convert from python to json 
@@ -58,3 +59,16 @@ class AdminJobStatsView(APIView):
             'closedJobs': closed_jobs.distinct().count(),
             'totalApplications': total_applications,
         })
+
+def job_details(request):
+    return render(request,'job-details.html')
+def add_job(request):
+    return render(request,'add-job.html')
+def add_edit_job(request):
+    return render(request,'add-edit-job.html')
+def edit_job(request):
+    return render(request,'edit-job.html')
+def jobs(request):
+    return render(request,'jobs.html')
+def my_jobs(request):
+    return render(request,'My jobs.html')

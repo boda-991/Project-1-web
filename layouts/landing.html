@@ -1,25 +1,29 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Talentsy</title>
-    <link rel="stylesheet" href="../src/css/style.css">
-    <link rel="stylesheet" href="../src/css/landing.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/landing.css' %}">
 </head>
 <body>
     <div class="titleBar">
-        <a href="landing.html">
-            <img src="../src/img/talentsy.png" width="250">
+        <a href="{% url 'landing' %}">
+            <img src="{% static 'img/talentsy.png' %}" width="250">
         </a>
-        <div class="tbLeftCont">
-            <a class="titleBarLink" href="jobs.html" id="jobs-link">Find Jobs</a>
-            <a class="titleBarLink" href="My jobs.html" id="my-jobs-link">My Jobs</a>
-            <a class="titleBarLink" href="admin-dashboard.html" id="admin-dashboard-link">My Job Posts</a>
-            <a class="titleBarLinkEnd" href="add-job.html" id="post-job-link">Post a Job</a>
-        </div>
+<div class="tbLeftCont">
+    <a class="titleBarLink" href="{% url 'jobs' %}" id="jobs-link">Find Jobs</a>
+
+    <a class="titleBarLink" href="{% url 'my-jobs' %}" id="my-jobs-link">My Jobs</a>
+<!-- for test  -->
+    <a class="titleBarLink" href="{% url 'landing' %}" id="admin-dashboard-link">My Job Posts</a>
+
+    <a class="titleBarLinkEnd" href="{% url 'add-job' %}" id="post-job-link">Post a Job</a>
+</div>
         <div class="tbRightCont">
-            <a href="../layouts/Login_register.html" id="login-link">
+            <a href="{% url 'login-register_page' %}" id="login-link">
                  <button class="btn">Sign-Up</button>
             </a>
             <button id="btn-logout" class="btnSecondary" onclick="logout()">Logout</button>
@@ -48,21 +52,21 @@
     <div class="hero2">
         <div class="heroCard card3">
             <div class="heroCardItem">
-                <img src="../src/img/job_ico.png" width="50px">
+                <img src="{% static 'img/job_ico.png' %}" width="50px">
                 <p>150k+ Job Postings</p>
             </div>
             <div class="heroCardItem">
-                <img src="../src/img/company_ico.png" width="50px">
+                <img src="{% static 'img/company_ico.png' %}" width="50px">
                 <p>10k+ Verified Companies</p>
             </div>
 
             <div class="heroCardItemEnd">
-                <img src="../src/img/worker_ico.png" width="50px">
+                <img src="{% static 'img/worker_ico.png' %}" width="50px">
                 <p>600k+ Job Seakers</p>
             </div>
             
         </div>
     </div>
-    <script src="../src/js/roles.js"></script>
+    <script src="{% static 'js/roles.js' %}"></script>
 </body>
 </html>

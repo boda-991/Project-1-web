@@ -1,24 +1,25 @@
-
+{% load static%}
 <html>
 <head>
     <title>Job Search - Jobs</title>
-    <link rel="stylesheet" href="../src/css/style.css">
-    <link rel="stylesheet" href="../src/css/jobs.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jobs.css'%}">
 </head>
 
 <body>
     <div class="titleBar">
-        <a href="landing.html">
-            <img src="../src/img/talentsy.png" width="250">
+        <a href="{% url 'landing' %}">
+            <img src="{% static 'img/talentsy.png'%}" width="250">
         </a>
         <div class="tbLeftCont">
-            <a class="titleBarLink" href="jobs.html" id="jobs-link">Find Jobs</a>
-            <a class="titleBarLink" href="My jobs.html" id="my-jobs-link">My Jobs</a>
-            <a class="titleBarLink" href="admin-dashboard.html" id="admin-dashboard-link">My Job Posts</a>
-            <a class="titleBarLinkEnd" href="add-job.html" id="post-job-link">Post a Job</a>
+            <a class="titleBarLink" href="{% url 'jobs' %}" id="jobs-link">Find Jobs</a>
+            <a class="titleBarLink" href="{% url 'my-jobs' %}" id="my-jobs-link">My Jobs</a>
+           <!-- for testing -->
+            <a class="titleBarLink" href="{% url 'jobs' %}" id="admin-dashboard-link">My Job Posts</a>
+            <a class="titleBarLinkEnd" href="{% url 'add-job' %}" id="post-job-link">Post a Job</a>
         </div>
         <div class="tbRightCont">
-            <a href="../layouts/Login_register.html" id="login-link">
+            <a href="{% url 'Login_register' %}" id="login-link">
                  <button class="btn">Sign-Up</button>
             </a>
             <button id="btn-logout" class="btnSecondary" onclick="logout()">Logout</button>
@@ -46,8 +47,8 @@
             </div> 
     </div>
 
-    <script src="../src/js/utils.js"></script> 
-    <script src="../src/js/jobs.js"></script>
-    <script src="../src/js/roles.js"></script>
+    <script src="{% static 'js/utils.js'%}"></script> 
+    <script src="{% static 'js/jobs.js'%}"></script>
+    <script src="{% static 'js/roles.js'%}"></script>
 </body>
 </html>

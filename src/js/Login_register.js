@@ -74,7 +74,7 @@ document.getElementById("registerForm").addEventListener("submit", function(e) {
     .then(result => {
         alert("Registered successfully");
         setTimeout(() => { document.getElementById("registerForm").reset(); }, 1000);
-        window.location.href = "Login_register.html";
+        window.location.href = "/login-register/";
     })
     .catch(error => {
         alert("Registration failed: " + error.message);
@@ -99,9 +99,9 @@ document.getElementById("loginForm").addEventListener("submit", function(e) {
         alert("Login successful: " + user.username);
         localStorage.setItem("currentUser", JSON.stringify(user));
         if (user.is_admin) {
-            window.location.href = "admin-dashboard.html";
+            window.location.href = "/admin-dashboard/";
         } else {
-            window.location.href="jobs.html";
+            window.location.href="/jobs/";
         }
     })
     .catch(error => {
